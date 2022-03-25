@@ -1,23 +1,30 @@
 input_boolean:
-  laundry_display:
-
-  computer_lock:
-    name: Avstängningslås
-    icon: custom:lock
+#  laundry_display:
+#
+#  computer_lock:
+#    name: Avstängningslås
+#    icon: custom:lock
 
 input_number:
-  monitors_volume:
-    name: Volym
-    icon: mdi:volume-high
-    initial: 20
-    min: 7
-    max: 75
-    unit_of_measurement: '%'
+#  monitors_volume:
+#    name: Volym
+#    icon: mdi:volume-high
+#    initial: 20
+#    min: 7
+#    max: 75
+#    unit_of_measurement: '%'
+#
+#  fan_timer:
+#    name: Stäng efter
+#    icon: mdi:timer-outline
+#    initial: 12
+#    min: 1
+#    max: 12
+#    unit_of_measurement: h
 
-  fan_timer:
-    name: Stäng efter
-    icon: mdi:timer-outline
-    initial: 12
-    min: 1
-    max: 12
-    unit_of_measurement: h
+input_select:
+  conditional_media:
+    initial: Spotify
+    options:
+      - Lennart
+      - Spotify

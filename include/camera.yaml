@@ -1,10 +1,13 @@
 camera:
+  - platform: generic
+    name: Wohnzimmer Tablet Kamera
+    still_image_url: !secret tablet_still_image_url
   - platform: xiaomi_cloud_map_extractor
     host: !secret xiaomi_vacuum_host
     token: !secret xiaomi_vacuum_token
     username: !secret xiaomi_cloud_username
     password: !secret xiaomi_cloud_password
-    name: vacuum_map
+    name: "Roborock Frieda"
     country: de
     colors:
       color_robo: [224,224,224]
@@ -23,12 +26,6 @@ camera:
       color_map_wall: [0,0,0,0]
       color_zones_outline: [0,0,0,0]
       color_zones: [0,0,0,0]
-    room_colors:
-      1: [42,46,48]
-      2: [42,46,48]
-      16: [42,46,48]
-      17: [42,46,48]
-      18: [42,46,48]
     draw:
       - all
     map_transformation:

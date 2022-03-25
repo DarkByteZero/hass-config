@@ -1,84 +1,74 @@
 homekit:
-  - ip_address: !secret homekit_ip_address
-    filter:
+  - filter:
+      include_domains:
+        - alarm_control_panel
+        - light
+        - media_player
+        - binary_sensor
+        - camera
+        - fan
+        - sensor
+        - climate
+        - humidifier
+        - lock
+        - switch
+        - scene
+      include_entity_globs:
+        - binary_sensor.*_occupancy
+        - binary_sensor.*_contact
+        - light.couchlampe_*
+        - light.kreislampe_*
+        - light.deckenleuchte_*
+        - light.dachboden_deckenlampe_*
+        - light.wohnzimmer_deckenlampe_*
+        - camera.garten*
+        - sensor.*_temperature
+        - sensor.*_humidity
+        - fan.*
+        - humidifier.*
       include_entities:
-        - switch.deltaco_sh_p01
-        - switch.computer_imac
-        - switch.gosund_monitors_switch
-        - climate.ac
-        - switch.playstation_5
-        - fan.studio
-        - person.matte
-        - person.sanja
-        - script.home_leave
-        - script.home_arrive
-        - script.samsung_tv_energy_saving
-        - vacuum.morty
-        - fan.climate_fan_only
-        - script.bedroom_tv_night
+        - camera.haustur
+        - camera.wohnzimmer_tablet_kamera
+        - scene.lg_fernseher_power
+        - binary_sensor.flur
+        - lock.flur
     entity_config:
-      switch.deltaco_sh_p01:
-        name: Balkong
-      switch.computer_imac:
-        name: Dator
-      switch.gosund_monitors_switch:
-        name: Monitorer
-      climate.ac:
-        name: Klimat
-      switch.playstation_5:
-        name: Playstation
-      fan.studio:
-        name: Fläkt
-      person.matte:
-        name: Mattias
-      person.sanja:
-        name: Sanja
-      script.home_leave:
-        name: Stäng allt
-      script.home_arrive:
-        name: Hemma
-      script.samsung_tv_energy_saving:
-        name: Eko
-      vacuum.morty:
-        name: Morty
-      fan.climate_fan_only:
-        name: AC Fläkt
-      script.bedroom_tv_night:
-        name: Nattläge
+      humidifier.pure_humidify_cool:
+        linked_humidity_sensor: sensor.pure_humidify_cool_humidity
 
-  - name: HASS Bridge Sony
-    ip_address: !secret homekit_ip_address
-    port: 51828
-    mode: accessory
-    filter:
-      include_entities:
-        - media_player.sony_bravia_tv
-    entity_config:
-      media_player.sony_bravia_tv:
-        name: Sony TV
-        feature_list:
-          - feature: on_off
-
-  - name: HASS Bridge Samsung
-    ip_address: !secret homekit_ip_address
-    port: 51829
-    mode: accessory
-    filter:
-      include_entities:
-        - media_player.samsung_tv
-    entity_config:
-      media_player.samsung_tv:
-        name: Samsung TV
-        feature_list:
-          - feature: on_off
-
-  - name: HASS Bridge Lock
-    ip_address: !secret homekit_ip_address
-    port: 51830
-    mode: accessory
-    filter:
-      include_entities:
-        - lock.dator
-    entity_config:
-      lock.dator:
-        name: Dator
+#  - name: HASS Bridge Sony
+#    ip_address: !secret homekit_ip_address
+#    port: 51828
+#    mode: accessory
+#    filter:
+#      include_entities:
+#        - media_player.sony_bravia_tv
+#    entity_config:
+#      media_player.sony_bravia_tv:
+#        name: Sony TV
+#        feature_list:
+#          - feature: on_off
+#
+#  - name: HASS Bridge Samsung
+#    ip_address: !secret homekit_ip_address
+#    port: 51829
+#    mode: accessory
+#    filter:
+#      include_entities:
+#        - media_player.samsung_tv
+#    entity_config:
+#      media_player.samsung_tv:
+#        name: Samsung TV
+#        feature_list:
+#          - feature: on_off
+#
+#  - name: HASS Bridge Lock
+#    ip_address: !secret homekit_ip_address
+#    port: 51830
+#    mode: accessory
+#    filter:
+#      include_entities:
+#        - lock.dator
+#    entity_config:
+#      lock.dator:
+#        name: Dator

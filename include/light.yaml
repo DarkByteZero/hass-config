@@ -1,44 +1,64 @@
 light:
   - platform: group
-    name: group_belysning
+    name: Couch Lampe
     entities:
-      - light.tv
-      - light.golv
-
+      - light.couchlampe_mitte
+      - light.couchlampe_oben
+      - light.couchlampe_unten
   - platform: group
-    name: group_taklampor
+    name: Conny Deckenlampe
     entities:
-      - light.spot_1
-      - light.spot_2
-
+      - light.deckenleuchte_links
+      - light.deckenleuchte_mitte
+      - light.deckenleuchte_rechts
   - platform: group
-    name: group_sanglampor
+    name: Dachboden Deckenlampe
     entities:
-      - light.byra
-      - light.mattias
-      - light.sanja
-
+      - light.dachboden_deckenlampe_links
+      - light.dachboden_deckenlampe_mitte
+      - light.dachboden_deckenlampe_rechts
   - platform: group
-    name: group_badrum
+    name: Kreislampe Rechts
     entities:
-      - light.vask_vanster
-      - light.vask_hoger
-
+      - light.kreislampe_7
+      - light.kreislampe_8
   - platform: group
-    name: group_hall
+    name: Kreislampe Mitte
     entities:
-      - light.hall_1
-      - light.hall_2
-      - light.hall_3
-
+      - light.kreislampe_3
+      - light.kreislampe_4
+      - light.kreislampe_5
+      - light.kreislampe_6
   - platform: group
-    name: group_all_exclude_hall
+    name: Kreislampe Links
     entities:
-      - light.group_belysning
-      - light.group_taklampor
-      - light.group_sanglampor
-      - light.group_badrum
-      
-      - light.horna
-      - light.dator
-      - light.garderob
+      - light.kreislampe_2
+      - light.kreislampe_1
+  - platform: group
+    name: Kreislampen
+    entities:
+      - light.kreislampe_rechts
+      - light.kreislampe_mitte
+      - light.kreislampe_links
+  - platform: group
+    name: Wandstrahler
+    entities:
+      - light.wandstrahler_links
+      - light.wandstrahler_rechts
+  - platform: group
+    name: Kreislampen
+    entities:
+      - light.deckenleuchte_links
+      - light.deckenleuchte_mitte
+      - light.deckenleuchte_rechts
+  - platform: group
+    name: Wohnzimmer Deckenlampen
+    entities:
+      - light.wohnzimmer_deckenlampe_1
+      - light.wohnzimmer_deckenlampe_2
+      - light.wohnzimmer_deckenlampe_3
+      - light.wohnzimmer_deckenlampe_4
+      - light.wohnzimmer_deckenlampe_5
+      - light.wohnzimmer_deckenlampe_6
+      - light.wohnzimmer_deckenlampe_7
+      - light.wohnzimmer_deckenlampe_8
