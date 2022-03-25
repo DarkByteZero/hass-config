@@ -1,7 +1,7 @@
 action: fire-dom-event
 browser_mod:
   command: popup
-  title: Dammsugare
+  title: Roborock
   style:
     .: |
       :host .content {
@@ -109,7 +109,7 @@ browser_mod:
             class: header
           entities:
 
-          - entity: vacuum.morty
+          - entity: vacuum.frieda
 
           - entity: sensor.morty_last_clean_end
 
@@ -132,18 +132,19 @@ browser_mod:
             entity_row: true
             entities:
 
-              - entity: vacuum.morty
+              - entity: vacuum.frieda
                 attribute: battery_level
-                name: Batteri
+                name: Akku
                 icon: mdi:battery
 
-              - entity: sensor.template_vacuum_filter
-
-              - entity: sensor.template_vacuum_mainbrush
-
-              - entity: sensor.template_vacuum_sidebrush
-
-              - entity: sensor.template_vacuum_sensors
+              - entity: sensor.template_frieda_filter
+                name: Filter
+              - entity: sensor.template_frieda_mainbrush
+                name: Hauptbürste
+              - entity: sensor.template_frieda_sidebrush
+                name: Seitenbürste
+              - entity: sensor.template_frieda_sensors
+                name: Sensoren
 
           - entity: select.vacuum_speed
 
@@ -151,7 +152,7 @@ browser_mod:
           cards:
 
             - type: custom:button-card
-              entity: vacuum.morty
+              entity: vacuum.frieda
               icon: mdi:play-pause
               tap_action:
                 action: call-service
@@ -173,7 +174,7 @@ browser_mod:
               template: icon_only
 
             - type: custom:button-card
-              entity: vacuum.morty
+              entity: vacuum.frieda
               icon: mdi:battery-charging
               tap_action:
                 action: call-service
@@ -193,7 +194,7 @@ browser_mod:
                 action: call-service
                 service: vacuum.send_command
                 service_data:
-                  entity_id: vacuum.morty
+                  entity_id: vacuum.frieda
                   command: app_goto_target
                   params: [16821,23105]
               template: icon_only
@@ -205,15 +206,15 @@ browser_mod:
       #################################################
 
       - type: custom:xiaomi-vacuum-map-card
-        title: Kartläggning
+        title: Karte
         view_layout:
           grid-area: map
         card_mod:
           class: header
         language: sv
-        entity: vacuum.morty
+        entity: vacuum.frieda
         map_source:
-          camera: camera.vacuum_map
+          camera: camera.roborock_frieda
         calibration_source:
           camera: true
         map_locked: true
