@@ -41,7 +41,7 @@ lovelace:
       type: module
     - url: /hacsfiles/bar-card/bar-card.js
       type: module
-    - url: /hacsfiles/verti cal-stack-in-card/vertical-stack-in-card.js
+    - url: /hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js
       type: module
     - url: /hacsfiles/lovelace-home-feed-card/lovelace-home-feed-card.js
       type: module
@@ -68,6 +68,10 @@ lovelace:
     - url: /hacsfiles/lovelace-layout-card/layout-card.js
       type: module
     - url: /hacsfiles/light-popup-card/light-popup-card.js
+      type: module
+    - url: /hacsfiles/light-entity-card/light-entity-card.js
+      type: module
+    - url: /hacsfiles/kiosk-mode/kiosk-mode.js
       type: module
 
 # Text to speech

@@ -1,7 +1,7 @@
 action: fire-dom-event
 browser_mod:
   command: popup
-  title: Roborock
+  title: Roborock Frieda
   style:
     .: |
       :host .content {
@@ -95,7 +95,7 @@ browser_mod:
 
       #################################################
       #                                               #
-      #                 INSTÄLLNINGAR                 #
+      #                 Einstellungen                 #
       #                                               #
       #################################################
 
@@ -104,14 +104,14 @@ browser_mod:
           grid-area: info
         cards:
         - type: entities
-          title: Översikt
+          title: Übersicht
           card_mod:
             class: header
           entities:
 
           - entity: vacuum.frieda
 
-          - entity: sensor.morty_last_clean_end
+          - entity: sensor.frieda_last_clean_end
 
           - type: custom:bar-card
             width: 55%
@@ -146,7 +146,7 @@ browser_mod:
               - entity: sensor.template_frieda_sensors
                 name: Sensoren
 
-          - entity: select.vacuum_speed
+          - entity: select.frieda_speed
 
         - type: horizontal-stack
           cards:
@@ -201,7 +201,7 @@ browser_mod:
 
       #################################################
       #                                               #
-      #                 KARTLÄGGNING                  #
+      #                 Karte                         #
       #                                               #
       #################################################
 
