@@ -1,2 +1,13 @@
 light:
-
+  - platform: group
+    name: bad_deckenlampen
+    entities:
+      - light.bad_deckenlampe_1
+      - light.bad_deckenlampe_2
+      - light.bad_deckenlampe_3
+      - light.bad_deckenlampe_4
+      - light.bad_deckenlampe_5
+      - light.bad_deckenlampe_6
+      - light.bad_deckenlampe_7
+      - light.bad_deckenlampe_8
+      - light.bad_deckenlampe_9

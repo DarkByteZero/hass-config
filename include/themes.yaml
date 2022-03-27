@@ -195,7 +195,39 @@ frontend:
                 filter: contrast(85%);
               }
             }
-
+        
+        #################################################
+        #                                               #
+        #             SIDEBAR BOTTOM ICONS              #
+        #                                               #
+        #################################################
+        
+        "grid-layout$hui-vertical-stack-card$hui-grid-card":
+          .: |
+            hui-grid-card {
+              display: flex;
+              flex: auto;
+              align-items: flex-end;
+            }
+            /* phone */
+            @media screen and (max-width: 800px) {
+              hui-grid-card {
+                position: absolute;
+                right: 5.5vw;
+              }
+            }
+          $: |
+            #root {
+              width: 100%;
+              padding: 0 13% 0% 13%;
+            }
+            /* phone */
+            @media screen and (max-width: 800px) {
+              #root {
+                padding: 0 0 0 55%;
+              }
+            }
+        
         #################################################
         #                                               #
         #                    FOOTER                     #

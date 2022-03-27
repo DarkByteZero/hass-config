@@ -1,5 +1,4 @@
 template:
-
   ####################################################
   #                                                  #
   #                      SELECT                      #
@@ -99,7 +98,6 @@ template:
             source: >
               {{ option }}
 
-
     ####################################################
     #                                                  #
     #                  BINARY SENSOR                   #
@@ -143,7 +141,7 @@ template:
   - sensor:
       - unique_id: frieda_filter
         icon: custom:roborock-filter
-        unit_of_measurement: '%'
+        unit_of_measurement: "%"
         state: >
           {{ (states('sensor.frieda_filter_left') | int(default=0) / 5400) | int(default=0) }}
         attributes:
@@ -151,7 +149,7 @@ template:
 
       - unique_id: frieda_mainbrush
         icon: custom:roborock-mainbrush
-        unit_of_measurement: '%'
+        unit_of_measurement: "%"
         state: >
           {{ (states('sensor.frieda_main_brush_left') | int(default=0) / 10800) | int(default=0) }}
         attributes:
@@ -159,7 +157,7 @@ template:
 
       - unique_id: frieda_sensors
         icon: custom:roborock-sensor
-        unit_of_measurement: '%'
+        unit_of_measurement: "%"
         state: >
           {{ (states('sensor.frieda_sensor_dirty_left') | int(default=0) / 1080) | int(default=0) }}
         attributes:
@@ -167,7 +165,7 @@ template:
 
       - unique_id: frieda_sidebrush
         icon: custom:roborock-sidebrush
-        unit_of_measurement: '%'
+        unit_of_measurement: "%"
         state: >
           {{ (states('sensor.frieda_side_brush_left') | int(default=0) / 7200) | int(default=0) }}
         attributes:
@@ -224,46 +222,47 @@ template:
               states.light.garten_2_light,
               states.light.wohnzimmer_deckenlampen,
               states.switch.aquarium_licht,
-              states.light.rgb_light_strip_treppe
+              states.light.rgb_light_strip_treppe,
+              states.light.bad_deckenlampen
             ] %}
-            
+
             {% set switches = [
               states.fan.pure_humidify_cool
             ] %}
-            
+
             {% set media_players = [
               states.media_player.sony_bravia_tv
             ] %}
-            
+
             {% set lights_on = lights | selectattr('state','eq','on') | list %}
             {% set lights_name = lights | selectattr('state','eq','on') | map(attribute='name') | join(', ') %}
-            
+
             {% set switches_on = switches | selectattr('state','eq','on') | list %}
             {% set media_players_playing = media_players | selectattr('state','eq','playing') | list %}
             {% set append = switches_on + media_players_playing %}
             {% set switches_name = append | map(attribute='name') | join(', ') %}
-            
+
             {% if (lights_on | length == 0) and (switches_on | length > 0) %}
               {{ switches_name | regex_replace(',([^,]*)$',' und\\1') }} ist an
-            
+
             {% elif (lights_on | length == 1) and (switches_on | length == 1) %}
               {{ lights_name }} und {{switches_name }} ist an
-            
+
             {% elif (lights_on | length == 1) and (switches_on | length > 1) %}
               {{ lights_name }}, {{ switches_name | regex_replace(',([^,]*)$',' och\\1') }} är på
-            
+
             {% elif (lights_on | length > 1) and (switches_on | length == 1) %}
               {{ lights_on | length }} Lampen und {{ switches_name }} sind an
-            
+
             {% elif (lights_on | length > 1) and (switches_on | length > 1) %}
               {{ lights_on | length }} Lampen, {{ switches_name | regex_replace(',([^,]*)$',' und\\1') }} sind an
-            
+
             {% elif (lights_on | length == 1) and (switches_on | length == 0) %}
               {{ lights_name }} ist an
-            
+
             {% elif (lights_on | length > 1) and (switches_on | length == 0) %}
               {{ lights_on | length }} Lichter sind an
-            
+
             {% else %}
               <font color=' 6a7377'>Alles ist aus</font>
             {% endif %}
@@ -274,45 +273,45 @@ template:
               states.binary_sensor.couch_fenster_links_contact,
               states.binary_sensor.couch_fenster_mitte_contact,
               states.binary_sensor.couch_fenster_rechts_contact,
-            
+
               states.binary_sensor.dachboden_fenster_hinten_contact,
               states.binary_sensor.dachboden_fenster_links_contact,
               states.binary_sensor.dachboden_fenster_mitte_contact,
               states.binary_sensor.dachboden_fenster_rechts_contact,
               states.binary_sensor.dachboden_fenster_kleines_fenster_contact,
-            
+
               states.binary_sensor.esszimmer_fenster_links_contact,
               states.binary_sensor.esszimmer_fenster_mitte_contact,
               states.binary_sensor.esszimmer_fenster_rechts_contact,
-            
+
               states.binary_sensor.hund_fenster_contact,
-            
+
               states.binary_sensor.kuche_fenster_links_contact,
               states.binary_sensor.kuche_fenster_rechts_contact,
-            
+
               states.binary_sensor.lennart_fenster_links_contact,
               states.binary_sensor.lennart_fenster_mitte_contact,
               states.binary_sensor.lennart_fenster_rechts_contact,
-            
+
               states.binary_sensor.mama_buro_fenster_links_unten_contact,
               states.binary_sensor.mama_buro_fenster_links_oben_contact,
               states.binary_sensor.mama_buro_fenster_rechts_unten_contact,
               states.binary_sensor.mama_buro_fenster_rechts_oben_contact,
-            
+
               states.binary_sensor.mama_fenster_links_contact,
               states.binary_sensor.mama_fenster_rechts_contact,
               states.binary_sensor.mama_fenster_hinten_contact,
-            
+
               states.binary_sensor.papa_buro_fenster_unten_contact,
-            
+
               states.binary_sensor.wohnung_unten_kuche_fenster_unten_contact,
               states.binary_sensor.wohnung_unten_schlafzimmer_fenster_links_contact,
               states.binary_sensor.wohnung_unten_schlafzimmer_fenster_rechts_contact,
-            
+
               states.binary_sensor.wohnzimmer_fenster_links_contact,
               states.binary_sensor.wohnzimmer_fenster_rechts_contact
             ] %}
-            
+
             {% set doors = [
               states.binary_sensor.aussentur_hof_contact,
               states.binary_sensor.aussentur_strasse_contact,
@@ -324,41 +323,41 @@ template:
               states.binary_sensor.wohnungstur_contact,
               states.binary_sensor.flur
             ] %}
-            
-            
+
+
             {% set windows_open = windows | selectattr('state','eq','on') | list %}
             {% set windows_name = windows | selectattr('state','eq','on') | map(attribute='name') | join(', ') %}
-            
+
             {% set doors_open = doors | selectattr('state','eq','on') | list %}
             {% set doors_name = doors | selectattr('state','eq','on') | map(attribute='name') | join(', ') %}
-            
-            
+
+
             {% if (windows_open | length == 0) and (doors_open | length > 1) %}
               {{ doors_open | length }} Türen geöffnet
-            
+
             {% elif (windows_open | length == 1) and (doors_open | length == 1) %}
               {{ windows_name }} und {{ doors_name }} ist offen
-            
+
             {% elif (windows_open | length == 1) and (doors_open | length > 1) %}
               {{ doors_open | length }} Türen und  {{ windows_name }} geöffnet
-            
+
             {% elif (windows_open | length > 1) and (doors_open | length == 1) %}
               {{ windows_open | length }} Fenster und {{ doors_name }} geöffnet
-            
+
             {% elif (windows_open | length > 1) and (doors_open | length > 1) %}
               {{ windows_open | length }} Fenster und {{ doors_open | length }} Türen geöffnet
-            
+
             {% elif (windows_open | length == 1) and (doors_open | length == 0) %}
               {{ windows_name }} offen
-            
+
             {% elif (doors_open | length == 1) and (windows_open | length == 0) %}
               {{ doors_name }} offen
-            
+
             {% elif (windows_open | length > 1) and (doors_open | length == 0) %}
               {{ windows_open | length }} Fenster geöffnet
-            
-            
-            
+
+
+
             {% else %}
               <font color=' 6a7377'>Alles ist zu</font>
             {% endif %}

@@ -1,25 +1,22 @@
 homeassistant:
-#  name: Hem
-#  latitude: !secret homeassistant_latitude
-#  longitude: !secret homeassistant_longitude
-#  elevation: !secret homeassistant_elevation
-#  unit_system: metric
-#  temperature_unit: C
-#  time_zone: Europe/Stockholm
-#  currency: SEK
-   packages: !include_dir_named include
+  #  name: Hem
+  #  latitude: !secret homeassistant_latitude
+  #  longitude: !secret homeassistant_longitude
+  #  elevation: !secret homeassistant_elevation
+  #  unit_system: metric
+  #  temperature_unit: C
+  #  time_zone: Europe/Stockholm
+  #  currency: SEK
+  packages: !include_dir_named include
 #  allowlist_external_dirs:
 #    - /config
 
 default_config:
 
-
 lovelace:
   mode: yaml
   resources:
     - url: /hacsfiles/stack-in-card/stack-in-card.js
-      type: module
-    - url: /local/mini-graph-card-bundle.js
       type: module
     - url: /hacsfiles/decluttering-card/decluttering-card.js
       type: module
@@ -73,7 +70,10 @@ lovelace:
       type: module
     - url: /hacsfiles/kiosk-mode/kiosk-mode.js
       type: module
-
+    - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+      type: module
+    - url: /hacsfiles/apexcharts-card/apexcharts-card.js
+      type: module
 # Text to speech
 tts:
   - platform: google_translate
@@ -88,7 +88,6 @@ logger:
     homeassistant.components.websocket_api: fatal
     homeassistant.components.camera: fatal
     homeassistant.helpers.entity: fatal
-
 
 influxdb:
   host: a0d7b954-influxdb
@@ -105,7 +104,6 @@ influxdb:
 #      args:
 #        url: !secret waste_collection_schedule_url
 
-
 spotify:
   client_id: !secret spotify_client_id
   client_secret: !secret spotify_client_secret
@@ -114,12 +112,10 @@ spotify:
 #  client_id: !secret google_client_id
 #  client_secret: !secret google_client_secret
 
-
 icloud:
   - username: !secret icloud_username
     password: !secret icloud_password
     with_family: true
-
 
 calendar:
   - platform: caldav

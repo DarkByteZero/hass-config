@@ -1271,6 +1271,38 @@
           - opacity: 1
           - display: grid
 
+
+  #################################################
+  #                                               #
+  #                  Occupancy                     #
+  #                                               #
+  #################################################
+
+  occupancy:
+    custom_fields:
+      circle: >
+        [[[
+          if (variables.occupied === "on") {
+            return `
+              <ha-icon
+              icon="mdi:motion-sensor"
+              style="color: red;">
+              </ha-icon>
+            `;
+            
+          }
+        ]]]
+    styles:
+      custom_fields:
+        circle:
+          - width: 45%
+          - fill: var(--state-icon-color)
+          - margin: 1% 2% 0 0
+          - justify-self: end
+          - opacity: 1
+          - display: grid
+
+
   #################################################
   #                                               #
   #                    LAUNDRY                    #
@@ -1576,7 +1608,7 @@
     styles:
       custom_fields:
         icon:
-          - width: 87%
+          - width: 87%light
           - margin-top: -8%
           - fill: >
               [[[

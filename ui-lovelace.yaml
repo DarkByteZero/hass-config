@@ -2,7 +2,7 @@ button_card_templates: !include button_card_templates.yaml
 
 views:
   - type: custom:grid-layout
-    path: 0
+    path: og1
     layout:
       #default
       margin: 0
@@ -74,6 +74,28 @@ views:
                   entity_id: input_boolean.laundry_display
               template: laundry
 
+#          - type: grid
+#            cards:
+#            - type: button
+#              icon: "mdi:numeric-1"
+#              tap_action:
+#                action: navigate
+#                navigation_path: /eg/?kiosk
+#
+#            - type: button
+#              icon: "mdi:numeric-2"
+#              tap_action:
+#                action: navigate
+#                navigation_path: /og1/?kiosk
+#
+#            - type: button
+#              icon: "mdi:numeric-3"
+#              tap_action:
+#                action: navigate
+#                navigation_path: /og2/?kiosk
+
+
+
       #################################################
       #                                               #
       #                  Wohnzimmer                   #
@@ -135,59 +157,59 @@ views:
               - type: grid
                 columns: 2
                 cards:
-                  - type: custom:mini-graph-card
-                    entities:
-                      - entity: sensor.wohnzimmer_klima_temperature
-                        name: Temperatur (24h)
-                        show_fill: true
-                    hours_to_show: 24
-                    line_width: 3
-                    hour24: true
-                    points_per_hour: 2
-                    decimals: 1
-                    height: 250
-                    show:
-                      animate: true
-                      icon: false
-                      labels: false
-                      legend: false
-                      name: false
-                      graph: line
-                      extrema: false
-                      average: false
-                    card_mod:
-                      style: |
-                        ha-card {
-                          background: rgba(190,190,190,0.1);
-                          border-radius: 20px;
-                        }
-
-                  - type: custom:mini-graph-card
-                    entities:
-                      - entity: sensor.wohnzimmer_klima_humidity
-                        name: Luftfeuchtigkeit (24h)
-                        show_fill: true
-                    hours_to_show: 24
-                    align_icon: right
-                    align_state: left
-                    line_width: 3
-                    hour24: true
-                    points_per_hour: 2
-                    decimals: 1
-                    height: 250
-                    show:
-                      animate: true
-                      icon: false
-                      labels: false
-                      legend: false
-                      name: false
-                      graph: line
-                    card_mod:
-                      style: |
-                        ha-card {
-                          background: rgba(190,190,190,0.1);
-                          border-radius: 20px;
-                        }
+#                  - type: custom:mini-graph-card
+#                    entities:
+#                      - entity: sensor.wohnzimmer_klima_temperature
+#                        name: Temperatur (24h)
+#                        show_fill: true
+#                    hours_to_show: 24
+#                    line_width: 3
+#                    hour24: true
+#                    points_per_hour: 2
+#                    decimals: 1
+#                    height: 250
+#                    show:
+#                      animate: true
+#                      icon: false
+#                      labels: false
+#                      legend: false
+#                      name: false
+#                      graph: line
+#                      extrema: false
+#                      average: false
+#                    card_mod:
+#                      style: |
+#                        ha-card {
+#                          background: rgba(190,190,190,0.1);
+#                          border-radius: 20px;
+#                        }
+#
+#                  - type: custom:mini-graph-card
+#                    entities:
+#                      - entity: sensor.wohnzimmer_klima_humidity
+#                        name: Luftfeuchtigkeit (24h)
+#                        show_fill: true
+#                    hours_to_show: 24
+#                    align_icon: right
+#                    align_state: left
+#                    line_width: 3
+#                    hour24: true
+#                    points_per_hour: 2
+#                    decimals: 1
+#                    height: 250
+#                    show:
+#                      animate: true
+#                      icon: false
+#                      labels: false
+#                      legend: false
+#                      name: false
+#                      graph: line
+#                    card_mod:
+#                      style: |
+#                        ha-card {
+#                          background: rgba(190,190,190,0.1);
+#                          border-radius: 20px;
+#                        }
 
                   - type: custom:button-card
                     entity: switch.aquarium_licht
@@ -212,59 +234,59 @@ views:
         columns: 2
         cards:
 
-          - type: custom:mini-graph-card
-            entities:
-              - entity: sensor.kuche_klima_temperature
-                name: Temperatur (24h)
-                show_fill: true
-            hours_to_show: 24
-            line_width: 3
-            hour24: true
-            points_per_hour: 2
-            decimals: 1
-            height: 250
-            show:
-              animate: true
-              icon: false
-              labels: false
-              legend: false
-              name: false
-              graph: line
-              extrema: false
-              average: false
-            card_mod:
-              style: |
-                ha-card {
-                  background: rgba(190,190,190,0.1);
-                  border-radius: 20px;
-                }
-
-          - type: custom:mini-graph-card
-            entities:
-              - entity: sensor.kuche_klima_humidity
-                name: Luftfeuchtigkeit (24h)
-                show_fill: true
-            hours_to_show: 24
-            align_icon: right
-            align_state: left
-            line_width: 3
-            hour24: true
-            points_per_hour: 2
-            decimals: 1
-            height: 250
-            show:
-              animate: true
-              icon: false
-              labels: false
-              legend: false
-              name: false
-              graph: line
-            card_mod:
-              style: |
-                ha-card {
-                  background: rgba(190,190,190,0.1);
-                  border-radius: 20px;
-                }
+#          - type: custom:mini-graph-card
+#            entities:
+#              - entity: sensor.kuche_klima_temperature
+#                name: Temperatur (24h)
+#                show_fill: true
+#            hours_to_show: 24
+#            line_width: 3
+#            hour24: true
+#            points_per_hour: 2
+#            decimals: 1
+#            height: 250
+#            show:
+#              animate: true
+#              icon: false
+#              labels: false
+#              legend: false
+#              name: false
+#              graph: line
+#              extrema: false
+#              average: false
+#            card_mod:
+#              style: |
+#                ha-card {
+#                  background: rgba(190,190,190,0.1);
+#                  border-radius: 20px;
+#                }
+#
+#          - type: custom:mini-graph-card
+#            entities:
+#              - entity: sensor.kuche_klima_humidity
+#                name: Luftfeuchtigkeit (24h)
+#                show_fill: true
+#            hours_to_show: 24
+#            align_icon: right
+#            align_state: left
+#            line_width: 3
+#            hour24: true
+#            points_per_hour: 2
+#            decimals: 1
+#            height: 250
+#            show:
+#              animate: true
+#              icon: false
+#              labels: false
+#              legend: false
+#              name: false
+#              graph: line
+#            card_mod:
+#              style: |
+#                ha-card {
+#                  background: rgba(190,190,190,0.1);
+#                  border-radius: 20px;
+#                }
 
           - type: custom:button-card
             entity: light.rgbw_strip_kueche_waschbecken
@@ -276,61 +298,45 @@ views:
 
       #################################################
       #                                               #
-      #                    SOVRUM                     #
+      #                    Beleuchtung                #
       #                                               #
       #################################################
 
       - type: grid
-        title: Sovrum
+        title: Beleuchtung
         view_layout:
           grid-area: sovrum
         columns: 2
         cards:
 
           - type: custom:button-card
-            entity: light.group_sanglampor
-            name: Sänglampor
+            entity: light.bad_deckenlampen
+            name: Bad
             template:
               - light
-              - icon_lamp
-
-          - type: custom:button-card
-            entity: climate.ac
-            name: Klimat
-            hold_action:
-              !include popup/sovrum_klimat.yaml
-            template:
-              - base
-              - icon_climate
-              - climate
+              - icon_bathroom
+              - occupancy
             variables:
-              circle_input: >
+              occupied: >
                 [[[
-                  if (entity) {
-                    return entity.state === 'cool' ?
-                      entity.attributes.temperature :
-                      entity.attributes.current_temperature;
-                  }
+                  let motion = states['binary_sensor.bad_bewegungsmelder2_occupancy'];
+                  return motion === undefined || motion.state;
                 ]]]
-          - type: custom:button-card
-            entity: switch.playstation_5
-            name: Playstation
-            hold_action:
-              !include popup/vardagsrum_playstation.yaml
-            template:
-              - base
-              - icon_ps5
-              - loader
 
           - type: custom:button-card
-            entity: media_player.samsung_tv
-            name: "Tv\u00B2"
-            hold_action:
-              !include popup/sovrum_tv2.yaml
+            entity: light.dachboden_deckenlampe
+            name: Dachboden
             template:
-              - base
-              - icon_tv
-              - loader
+              - light
+              - icon_spot
+
+          - type: custom:button-card
+            entity: light.conny_deckenlampe
+            name: Conny
+            template:
+              - light
+              - icon_hue
+
 
       #################################################
       #                                               #
@@ -511,55 +517,55 @@ views:
               - type: grid
                 columns: 2
                 cards:
-                  - type: custom:mini-graph-card
-                    entities:
-                      - entity: sensor.pure_humidify_cool_temperature
-                        name: Temperatur (24h)
-                        show_fill: true
-                    hours_to_show: 24
-                    line_width: 2
-                    hour24: true
-                    points_per_hour: 2
-                    decimals: 1
-                    height: 250
-                    show:
-                      animate: true
-                      icon: false
-                      labels: false
-                      legend: false
-                      name: false
-                      graph: line
-                    card_mod:
-                      style: |
-                        ha-card {
-                          background: rgba(190,190,190,0.1);
-                          border-radius: 20px;
-                        }
-
-                  - type: custom:mini-graph-card
-                    entities:
-                      - entity: sensor.pure_humidify_cool_humidity
-                        name: Luftfeuchtigkeit (24h)
-                        show_fill: true
-                    hours_to_show: 24
-                    line_width: 2
-                    hour24: true
-                    points_per_hour: 2
-                    decimals: 1
-                    height: 250
-                    show:
-                      animate: true
-                      icon: false
-                      labels: false
-                      legend: false
-                      name: false
-                      graph: line
-                    card_mod:
-                      style: |
-                        ha-card {
-                          background: rgba(190,190,190,0.1);
-                          border-radius: 20px;
-                        }
+#                  - type: custom:mini-graph-card
+#                    entities:
+#                      - entity: sensor.pure_humidify_cool_temperature
+#                        name: Temperatur (24h)
+#                        show_fill: true
+#                    hours_to_show: 24
+#                    line_width: 2
+#                    hour24: true
+#                    points_per_hour: 2
+#                    decimals: 1
+#                    height: 250
+#                    show:
+#                      animate: true
+#                      icon: false
+#                      labels: false
+#                      legend: false
+#                      name: false
+#                      graph: line
+#                    card_mod:
+#                      style: |
+#                        ha-card {
+#                          background: rgba(190,190,190,0.1);
+#                          border-radius: 20px;
+#                        }
+#
+#                  - type: custom:mini-graph-card
+#                    entities:
+#                      - entity: sensor.pure_humidify_cool_humidity
+#                        name: Luftfeuchtigkeit (24h)
+#                        show_fill: true
+#                    hours_to_show: 24
+#                    line_width: 2
+#                    hour24: true
+#                    points_per_hour: 2
+#                    decimals: 1
+#                    height: 250
+#                    show:
+#                      animate: true
+#                      icon: false
+#                      labels: false
+#                      legend: false
+#                      name: false
+#                      graph: line
+#                    card_mod:
+#                      style: |
+#                        ha-card {
+#                          background: rgba(190,190,190,0.1);
+#                          border-radius: 20px;
+#                        }
 
 
       #################################################
