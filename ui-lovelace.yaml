@@ -317,12 +317,7 @@ views:
               - icon_bathroom
               - occupancy
             variables:
-              occupied: >
-                [[[
-                  let motion = states['binary_sensor.bad_bewegungsmelder2_occupancy'];
-                  return motion === undefined || motion.state;
-                ]]]
-
+              sensor: "binary_sensor.bad_bewegungsmelder2_occupancy"
           - type: custom:button-card
             entity: light.dachboden_deckenlampe
             name: Dachboden
@@ -504,6 +499,9 @@ views:
                     template:
                       - light
                       - icon_led
+                      - occupancy
+                    variables:
+                      sensor: "binary_sensor.dachboden_treppe_bewegungsmelder_occupancy"
 
                   - type: custom:button-card
                     entity: fan.pure_humidify_cool

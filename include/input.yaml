@@ -22,6 +22,13 @@ input_number:
 #    max: 12
 #    unit_of_measurement: h
 
+
+input_text:
+  ignore_motion:
+    name: Deaktivierte Bewegungsautomationen
+    initial: "placeholder"
+
+
 input_select:
   conditional_media:
     initial: Spotify

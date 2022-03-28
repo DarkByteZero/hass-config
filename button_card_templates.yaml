@@ -1279,28 +1279,51 @@
   #################################################
 
   occupancy:
+    double_tap_action:
+      action: call-service
+      service: input_text.set_value
+      service_data:
+        entity_id: input_text.ignore_motion
+        value: >
+          [[[
+            let ignored = states[input_text.ignore_motion].split(',');
+            if (ignored.includes(variables.sensor)) {
+              for( var i = 0; i < ignored.length; i++) { 
+
+                      if ( arr[i] === variables.sensor) { 
+
+                          arr.splice(i, 1); 
+                      }
+
+                  }
+            } else {
+              ignored.push(variables.sensor);
+              return ignored.join([separator = ',']);
+            }
+          ]]]
     custom_fields:
-      circle: >
+      secondary_info: >
         [[[
-          if (variables.occupied === "on") {
+          let motion = undefined || states[variables.sensor];
+          if (motion === "on") {
             return `
               <ha-icon
               icon="mdi:motion-sensor"
               style="color: red;">
               </ha-icon>
             `;
-            
-          }
+        
+          } 
         ]]]
     styles:
       custom_fields:
-        circle:
-          - width: 45%
-          - fill: var(--state-icon-color)
-          - margin: 1% 2% 0 0
-          - justify-self: end
+        secondary_info:
+          - top: 70%
+          - right: 3%
+          - width: 30%
+          - position: absolute
           - opacity: 1
-          - display: grid
+
 
 
   #################################################
