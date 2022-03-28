@@ -131,6 +131,9 @@ views:
                     template:
                       - light
                       - icon_led
+                      - occupancy
+                    variables:
+                      sensor: binary_sensor.dachboden_treppe_bewegungsmelder_occupancy
 
                   - type: custom:button-card
                     entity: light.wohnzimmer_deckenlampen
