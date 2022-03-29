@@ -683,16 +683,16 @@ views:
 
           - type: custom:button-card
             name: >
-              <ha-icon icon="mdi:robot-vacuum-variant"></ha-icon> Städa
+              <ha-icon icon="mdi:robot-vacuum-variant"></ha-icon> Reinigung
             tap_action:
               !include popup/footer/vacuum.yaml
             variables:
               notify: >
                 [[[
-                  let last_clean = states['sensor.morty_last_clean_end'],
-                    week_ms = 6048e5;
+                  let last_clean = states['sensor.frieda_last_clean_end'],
+                    day_ms = 86400000;
                   if (last_clean) {
-                    return (Date.now() - Date.parse(last_clean.state)) > week_ms;
+                    return (Date.now() - Date.parse(last_clean.state)) > day_ms;
                   }
                 ]]]
             template: footer
@@ -703,6 +703,8 @@ views:
             tap_action:
               !include popup/footer/history.yaml
             template: footer
+            variables:
+              notify: 2
 
           - type: custom:button-card
             name: >
