@@ -1,7 +1,7 @@
 action: fire-dom-event
 browser_mod:
   command: popup
-  title: Uppdateringar
+  title: Aktualisierungen
   style:
     .: |
       :host .content {
@@ -79,7 +79,7 @@ browser_mod:
 
       - type: custom:button-card
         entity: sensor.hacs
-        name: Öppna HACS
+        name: Öffne HACS
         icon: mdi:open-in-new
         styles:
           card:
