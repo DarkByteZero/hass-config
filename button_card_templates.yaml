@@ -1286,34 +1286,43 @@
         entity_id: input_text.ignore_motion
         value: >
           [[[
-            let ignored = states[input_text.ignore_motion].split(',');
+            let ignored = states["input_text.ignore_motion"].state.split(',');
             if (ignored.includes(variables.sensor)) {
               for( var i = 0; i < ignored.length; i++) { 
 
-                      if ( arr[i] === variables.sensor) { 
+                      if ( ignored[i] === variables.sensor) { 
 
-                          arr.splice(i, 1); 
+                          ignored.splice(i, 1); 
                       }
 
                   }
+              return ignored.join(',');
             } else {
               ignored.push(variables.sensor);
-              return ignored.join([separator = ',']);
+              console.log(ignored.join(','))
+              return ignored.join(',');
             }
           ]]]
     custom_fields:
       secondary_info: >
         [[[
-          let motion = undefined || states[variables.sensor];
-          if (motion === "on") {
+          let motion = states[variables.sensor].state;
+          if (motion === "on" && !states["input_text.ignore_motion"].state.split(',').includes(variables.sensor)) {
             return `
               <ha-icon
               icon="mdi:motion-sensor"
-              style="color: red;">
+              style="color: green;">
               </ha-icon>
             `;
         
-          } 
+          } else if (states["input_text.ignore_motion"].state.split(',').includes(variables.sensor)) {
+            return `
+              <ha-icon
+              icon="mdi:motion-sensor-off"
+              style="color: red;">
+              </ha-icon>
+            `;
+          }
         ]]]
     styles:
       custom_fields:

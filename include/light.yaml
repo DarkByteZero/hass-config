@@ -1,6 +1,6 @@
 light:
   - platform: group
-    name: bad_deckenlampen
+    name: Bad Deckenlampen
     entities:
       - light.bad_deckenlampe_1
       - light.bad_deckenlampe_2

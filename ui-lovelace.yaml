@@ -293,10 +293,13 @@ views:
 
           - type: custom:button-card
             entity: light.rgbw_strip_kueche_waschbecken
-            name: Waschbecken
+            name: Becken
             template:
               - light
               - icon_led
+              - occupancy
+            variables:
+              sensor: binary_sensor.kuche_bewegungsmelder_occupancy
 
 
       #################################################
@@ -320,7 +323,8 @@ views:
               - icon_bathroom
               - occupancy
             variables:
-              sensor: "binary_sensor.bad_bewegungsmelder2_occupancy"
+              sensor: binary_sensor.bad_bewegungsmelder2_occupancy
+
           - type: custom:button-card
             entity: light.dachboden_deckenlampe
             name: Dachboden
@@ -502,9 +506,6 @@ views:
                     template:
                       - light
                       - icon_led
-                      - occupancy
-                    variables:
-                      sensor: "binary_sensor.dachboden_treppe_bewegungsmelder_occupancy"
 
                   - type: custom:button-card
                     entity: fan.pure_humidify_cool

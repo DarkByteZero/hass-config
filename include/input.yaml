@@ -27,6 +27,7 @@ input_text:
   ignore_motion:
     name: Deaktivierte Bewegungsautomationen
     initial: "placeholder"
+    max: 255
 
 
 input_select:
