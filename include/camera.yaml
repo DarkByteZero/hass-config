@@ -3,11 +3,11 @@ camera:
     name: Wohnzimmer Tablet Kamera
     still_image_url: !secret tablet_still_image_url
   - platform: xiaomi_cloud_map_extractor
-    host: !secret xiaomi_vacuum_host_frieda
-    token: !secret xiaomi_vacuum_token_frieda
-    username: !secret xiaomi_cloud_username_frieda
-    password: !secret xiaomi_cloud_password_frieda
-    name: "Roborock Frieda"
+    host: !secret xiaomi_vacuum_host_herbert
+    token: !secret xiaomi_vacuum_token_herbert
+    username: !secret xiaomi_cloud_username_herbert
+    password: !secret xiaomi_cloud_password_herbert
+    name: "Roborock Herbert"
     country: de
     colors:
       color_robo: [224,224,224]

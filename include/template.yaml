@@ -53,32 +53,32 @@ template:
       #            option: >
       #              {{ option }}
       #
-      - name: frieda_speed
+      - name: herbert_speed
         state: >
-          {% set fan_speed = state_attr('vacuum.frieda', 'fan_speed') %}
+          {% set fan_speed = state_attr('vacuum.herbert', 'fan_speed') %}
           {{ 'Standard' if fan_speed == None else fan_speed }}
         options: >
-          {% set fan_speed_list = state_attr('vacuum.frieda', 'fan_speed_list') %}
+          {% set fan_speed_list = state_attr('vacuum.herbert', 'fan_speed_list') %}
           {{ ['Standard'] if fan_speed_list == None else fan_speed_list }}
         select_option:
           service: vacuum.set_fan_speed
           target:
-            entity_id: vacuum.frieda
+            entity_id: vacuum.herbert
           data:
             fan_speed: >
               {{ option }}
 
-      - name: frieda_water
+      - name: herbert_water
         state: >
-          {% set fan_speed = state_attr('vacuum.frieda', 'fan_speed') %}
+          {% set fan_speed = state_attr('vacuum.herbert', 'fan_speed') %}
           {{ 'Standard' if fan_speed == None else fan_speed }}
         options: >
-          {% set fan_speed_list = state_attr('vacuum.frieda', 'fan_speed_list') %}
+          {% set fan_speed_list = state_attr('vacuum.herbert', 'fan_speed_list') %}
           {{ ['Standard'] if fan_speed_list == None else fan_speed_list }}
         select_option:
           service: vacuum.set_fan_speed
           target:
-            entity_id: vacuum.frieda
+            entity_id: vacuum.herbert
           data:
             fan_speed: >
               {{ option }}
@@ -139,37 +139,37 @@ template:
     ####################################################
 
   - sensor:
-      - unique_id: frieda_filter
+      - unique_id: herbert_filter
         icon: custom:roborock-filter
         unit_of_measurement: "%"
         state: >
-          {{ (states('sensor.frieda_filter_left') | int(default=0) / 5400) | int(default=0) }}
+          {{ (states('sensor.herbert_filter_left') | int(default=0) / 5400) | int(default=0) }}
         attributes:
-          friendly_name: Filter Frieda
+          friendly_name: Filter Herbert
 
-      - unique_id: frieda_mainbrush
+      - unique_id: herbert_mainbrush
         icon: custom:roborock-mainbrush
         unit_of_measurement: "%"
         state: >
-          {{ (states('sensor.frieda_main_brush_left') | int(default=0) / 10800) | int(default=0) }}
+          {{ (states('sensor.herbert_main_brush_left') | int(default=0) / 10800) | int(default=0) }}
         attributes:
-          friendly_name: Hauptbürste Frieda
+          friendly_name: Hauptbürste Herbert
 
-      - unique_id: frieda_sensors
+      - unique_id: herbert_sensors
         icon: custom:roborock-sensor
         unit_of_measurement: "%"
         state: >
-          {{ (states('sensor.frieda_sensor_dirty_left') | int(default=0) / 1080) | int(default=0) }}
+          {{ (states('sensor.herbert_sensor_dirty_left') | int(default=0) / 1080) | int(default=0) }}
         attributes:
-          friendly_name: Sensoren Frieda
+          friendly_name: Sensoren Herbert
 
-      - unique_id: frieda_sidebrush
+      - unique_id: herbert_sidebrush
         icon: custom:roborock-sidebrush
         unit_of_measurement: "%"
         state: >
-          {{ (states('sensor.frieda_side_brush_left') | int(default=0) / 7200) | int(default=0) }}
+          {{ (states('sensor.herbert_side_brush_left') | int(default=0) / 7200) | int(default=0) }}
         attributes:
-          friendly_name: Seitenbürste Frieda
+          friendly_name: Seitenbürste Herbert
 
       - unique_id: sidebar
         state: template
@@ -368,11 +368,11 @@ template:
               {{ '\U0001F4EC' }} <font color=' 6a7377'><b>Briefkasten ({{ mailbox }})</b></font>
             {% endif %}
           vacuum: >
-            {% set entity_id = 'vacuum.frieda' %}
+            {% set entity_id = 'vacuum.herbert' %}
             {% if is_state(entity_id, 'cleaning') %}
-              <b>Frieda reinigt</b>
+              <b>Herbert reinigt</b>
             {% elif is_state(entity_id, 'returning') %}
-              <b>Frieda ist fertig</b>
+              <b>Herbert ist fertig</b>
             {% endif %}
           weather: >
             {% set temperature = states('sensor.weatherlink_temp') %}

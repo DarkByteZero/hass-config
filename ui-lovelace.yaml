@@ -689,7 +689,7 @@ views:
             variables:
               notify: >
                 [[[
-                  let last_clean = states['sensor.frieda_last_clean_end'],
+                  let last_clean = states['sensor.herbert_last_clean_end'],
                     day_ms = 86400000;
                   if (last_clean) {
                     return (Date.now() - Date.parse(last_clean.state)) > day_ms;

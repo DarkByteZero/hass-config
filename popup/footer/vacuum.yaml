@@ -1,7 +1,7 @@
 action: fire-dom-event
 browser_mod:
   command: popup
-  title: Roborock Frieda
+  title: Roborock Herbert
   style:
     .: |
       :host .content {
@@ -109,9 +109,9 @@ browser_mod:
             class: header
           entities:
 
-          - entity: vacuum.frieda
+          - entity: vacuum.herbert
 
-          - entity: sensor.frieda_last_clean_end
+          - entity: sensor.herbert_last_clean_end
 
           - type: custom:bar-card
             width: 55%
@@ -132,27 +132,27 @@ browser_mod:
             entity_row: true
             entities:
 
-              - entity: vacuum.frieda
+              - entity: vacuum.herbert
                 attribute: battery_level
                 name: Akku
                 icon: mdi:battery
 
-              - entity: sensor.template_frieda_filter
+              - entity: sensor.template_herbert_filter
                 name: Filter
-              - entity: sensor.template_frieda_mainbrush
+              - entity: sensor.template_herbert_mainbrush
                 name: Hauptbürste
-              - entity: sensor.template_frieda_sidebrush
+              - entity: sensor.template_herbert_sidebrush
                 name: Seitenbürste
-              - entity: sensor.template_frieda_sensors
+              - entity: sensor.template_herbert_sensors
                 name: Sensoren
 
-          - entity: select.frieda_speed
+          - entity: select.herbert_speed
 
         - type: horizontal-stack
           cards:
 
             - type: custom:button-card
-              entity: vacuum.frieda
+              entity: vacuum.herbert
               icon: mdi:play-pause
               tap_action:
                 action: call-service
@@ -174,7 +174,7 @@ browser_mod:
               template: icon_only
 
             - type: custom:button-card
-              entity: vacuum.frieda
+              entity: vacuum.herbert
               icon: mdi:battery-charging
               tap_action:
                 action: call-service
@@ -194,7 +194,7 @@ browser_mod:
                 action: call-service
                 service: vacuum.send_command
                 service_data:
-                  entity_id: vacuum.frieda
+                  entity_id: vacuum.herbert
                   command: app_goto_target
                   params: [16821,23105]
               template: icon_only
@@ -212,9 +212,9 @@ browser_mod:
         card_mod:
           class: header
         language: sv
-        entity: vacuum.frieda
+        entity: vacuum.herbert
         map_source:
-          camera: camera.roborock_frieda
+          camera: camera.roborock_herbert
         calibration_source:
           camera: true
         map_locked: true
