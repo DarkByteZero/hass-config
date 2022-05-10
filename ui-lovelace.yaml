@@ -220,6 +220,12 @@ views:
                     template:
                       - base
                       - icon_aquarium
+                  - type: custom:button-card
+                    entity: switch.rolladen_wohnzimmer
+                    name: Rolladen
+                    template:
+                      - base
+                      - icon_shutter
 
 
 
@@ -508,7 +514,7 @@ views:
                       - icon_led
 
                   - type: custom:button-card
-                    entity: fan.pure_humidify_cool
+                    entity: fan.dyson_lennart
                     name: Dyson
                     hold_action: !include popup/dyson_lennart.yaml
                     template:
@@ -519,6 +525,13 @@ views:
               - type: grid
                 columns: 2
                 cards:
+                  - type: custom:button-card
+                    entity: switch.rolladen_lennart
+                    name: Rolladen
+                    template:
+                      - base
+                      - icon_shutter
+
 #                  - type: custom:mini-graph-card
 #                    entities:
 #                      - entity: sensor.pure_humidify_cool_temperature

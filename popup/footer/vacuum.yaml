@@ -195,8 +195,17 @@ browser_mod:
                 service: vacuum.send_command
                 service_data:
                   entity_id: vacuum.herbert
-                  command: app_goto_target
-                  params: [16821,23105]
+                  command: app_start_collect_dust
+              template: icon_only
+
+            - type: custom:button-card
+              icon: mdi:dishwasher
+              tap_action:
+                action: call-service
+                service: vacuum.send_command
+                service_data:
+                  entity_id: vacuum.herbert
+                  command: app_start_wash
               template: icon_only
 
       #################################################
@@ -211,7 +220,7 @@ browser_mod:
           grid-area: map
         card_mod:
           class: header
-        language: sv
+        language: de
         entity: vacuum.herbert
         map_source:
           camera: camera.roborock_herbert
@@ -220,32 +229,66 @@ browser_mod:
         map_locked: true
         map_modes:
           - template: vacuum_clean_zone
-          - template: vacuum_clean_zone_predefined
+          - template: vacuum_clean_segment
             predefined_selections:
-              - zones: [[14895, 20640, 18409, 24058]]
+              - id: 18
+                label:
+                  text: Esszimmer
+                  x: 27350
+                  y: 23825
+                  offset_y: 35
                 icon:
-                  name: mdi:silverware-fork-knife
-                  x: 16708
-                  y: 22291
-              - zones: [[15208, 17278, 20204, 20980]]
+                  name: "mdi:silverware-fork-knife"
+                  x: 27350
+                  y: 23825
+              - id: 21
+                label:
+                  text: Flur
+                  x: 23725
+                  y: 28700
+                  offset_y: 35
                 icon:
-                  name: mdi:bed
-                  x: 17706
-                  y: 19043
-              - zones: [[18170, 20925, 23138, 25026]]
+                  name: "mdi:broom"
+                  x: 23725
+                  y: 28700
+              - id: 19
+                label:
+                  text: Bad
+                  x: 29350
+                  y: 27175
+                  offset_y: 35
                 icon:
-                  name: mdi:door
-                  x: 22293
-                  y: 21864
-              - zones: [[21474, 24942, 27269, 28873]]
+                  name: "mdi:toilet"
+                  x: 29350
+                  y: 27175
+              - id: 20
+                label:
+                  text: Wohnzimmer
+                  x: 20075
+                  y: 27450
+                  offset_y: 35
                 icon:
-                  name: mdi:sofa
-                  x: 24401
-                  y: 26736
-              - zones: [[17687, 24885, 21487, 28816]]
+                  name: "mdi:sofa"
+                  x: 20075
+                  y: 27450
+              - id: 17
+                label:
+                  text: Zimmer Lennart
+                  x: 28100
+                  y: 32775
+                  offset_y: 35
                 icon:
-                  name: mdi:speaker
-                  x: 19757
-                  y: 26622
+                  name: "mdi:bed-king"
+                  x: 28100
+                  y: 32775
+              - id: 16
+                label:
+                  text: Küche
+                  x: 21775
+                  y: 33325
+                  offset_y: 35
+                icon:
+                  name: "mdi:stove"
+                  x: 21775
+                  y: 33325
           - template: vacuum_goto
-          - template: vacuum_follow_path

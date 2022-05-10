@@ -135,10 +135,10 @@ sensor:
 #      - precip_probability
 
 
-#  - platform: waste_collection_schedule
-#    name: Sophämtning
-#    value_template: >
-#      {{ value.daysTo }}
+  - platform: waste_collection_schedule
+    name: Müllabfuhr
+    value_template: >
+      {{ value.daysTo }}
 
 
     ####################################################

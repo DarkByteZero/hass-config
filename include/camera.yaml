@@ -15,7 +15,8 @@ camera:
       color_path: [30,80,113]
       color_goto_path: [30,80,113]
       color_map_wall_v2: [30,30,30]
-      color_obstacle: [30,30,30]
+      color_obstacle: [217,69,11]
+      color_obstacle_with_photo: [217,69,11]
       color_virtual_walls: [255,0,0,60]
       color_no_go_zones_outline: [255,0,0,60]
       color_no_go_zones: [255,0,0,28]
@@ -27,16 +28,29 @@ camera:
       color_zones_outline: [0,0,0,0]
       color_zones: [0,0,0,0]
     draw:
-      - all
+      - charger
+      - cleaned_area
+      - goto_path
+      - no_go_zones
+      - no_mopping_zones
+      - obstacles_with_photo
+      - obstacles
+      - path
+      - predicted_path
+      - room_names
+      - vacuum_position
+      - virtual_walls
+      - zones
     map_transformation:
       scale: 2
       trim:
         top: 19
         right: 21
-        bottom: 24
-        left: 21
+        bottom: 21
+        left: 17
     sizes:
       charger_radius: 10
       vacuum_radius: 10
     attributes:
       - calibration_points
+      - rooms

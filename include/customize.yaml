@@ -72,10 +72,10 @@ homeassistant:
 #    fan.studio:
 #      icon: custom:pedestal-fan
 #
-#    # template.yaml
-#    select.vacuum_speed:
-#      friendly_name: Rengöringsläge
-#      icon: mdi:format-list-bulleted
+    # template.yaml
+    select.herbert_speed:
+      friendly_name: Reinigungsmodus
+      icon: mdi:format-list-bulleted
 #    select.hdmi_bravia:
 #      friendly_name: Källa
 #      icon: custom:hdmi-source
@@ -90,13 +90,10 @@ homeassistant:
 #    automation.balcony:
 #      friendly_name: Tänd ljusslinga med rörelsedetektor
 #
-#    #sidebar_vacuum.yaml
-#    vacuum.morty:
-#      friendly_name: Roborock S5
-#      icon: custom:roborock-vacuum
-#    sensor.morty_last_clean_end:
-#      friendly_name: Senast städat
-#      icon: mdi:calendar-clock
+    #sidebar_vacuum.yaml
+    sensor.herbert_last_clean_end:
+      friendly_name: Zuletzt gereinigt
+      icon: mdi:calendar-clock
 #
 #    #sidebar_information.yaml
 #    switch.galaxy_tab_a_screensaver:

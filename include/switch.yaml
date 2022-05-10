@@ -20,8 +20,29 @@ switch:
 #    command_topic: !secret switchbot_mqtt_command
 #    state_topic: !secret switchbot_mqtt_state
 #
-#  - platform: template
-#    switches:
+  - platform: template
+    switches:
+      rolladen_lennart:
+        friendly_name: Rolladen Lennart
+        turn_on:
+          service: scene.turn_on
+          target:
+            entity_id: scene.lennart_rolladen_runter
+        turn_off:
+          service: scene.turn_on
+          target:
+            entity_id: scene.lennart_rolladen_hoch
+
+      rolladen_wohnzimmer:
+        friendly_name: Rolladen Wohnzimmer
+        turn_on:
+          service: scene.turn_on
+          target:
+            entity_id: scene.wohnzimmer_rolladen_runter
+        turn_off:
+          service: scene.turn_on
+          target:
+            entity_id: scene.wohnzimmer_rolladen_hoch
 #      computer_imac:
 #        friendly_name: Dator
 #        icon_template: custom:imac-alternative

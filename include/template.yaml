@@ -321,7 +321,9 @@ template:
               states.binary_sensor.mama_zimmertur_contact,
               states.binary_sensor.wohnung_unten_tur_contact,
               states.binary_sensor.wohnungstur_contact,
-              states.binary_sensor.flur
+              states.binary_sensor.flur,
+              states.binary_sensor.buro_trenntur_contact,
+              states.binary_sensor.burotur_contact
             ] %}
 
 
