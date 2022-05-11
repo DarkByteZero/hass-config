@@ -135,10 +135,20 @@ sensor:
 #      - precip_probability
 
 
+
   - platform: waste_collection_schedule
-    name: Müllabfuhr
-    value_template: >
-      {{ value.daysTo }}
+    name: next_collection
+
+    ####################################################
+    #                                                  #
+    #                       MQTT                       #
+    #                                                  #
+    ####################################################
+
+
+  - platform: mqtt
+    name: mailbox
+    state_topic: homeassistant/persistence/mailbox
 
 
     ####################################################
