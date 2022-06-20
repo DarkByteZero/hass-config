@@ -345,6 +345,16 @@ views:
               - light
               - icon_hue
 
+          - type: custom:button-card
+            entity: light.hund_lampe
+            name: Hund
+            template:
+              - light
+              - icon_spot
+              - occupancy
+            variables:
+              sensor: binary_sensor.hund_bewegungsmelder_occupancy
+
 
       #################################################
       #                                               #

@@ -664,8 +664,9 @@ automation:
         to: 'on'
       - platform: state
         entity_id: binary_sensor.aussentur_strasse_contact
-        from: 'off'
-        to: 'on'
+        not_from:
+          - "unknown"
+          - "unavailable"
     condition: >
       {{ as_timestamp(now()) - as_timestamp(state_attr(this.entity_id, 'last_triggered')) > 7
       or trigger.entity_id == 'binary_sensor.aussentur_strasse_contact' }}

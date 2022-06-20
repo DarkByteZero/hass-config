@@ -137,7 +137,13 @@ sensor:
 
 
   - platform: waste_collection_schedule
-    name: next_collection
+    name: MüllabfuhrTage
+    value_template: >
+      {{ value.daysTo }}
+
+  - platform: waste_collection_schedule
+    name: Müllabfuhr
+    value_template: '{{value.types|join(", ")}} {% if value.daysTo == 0 %}Heute{% elif value.daysTo == 1 %}Morgen{% else %}in {{value.daysTo}} Tagen{% endif %}'
 
     ####################################################
     #                                                  #

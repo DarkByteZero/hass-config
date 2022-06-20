@@ -223,7 +223,8 @@ template:
               states.light.wohnzimmer_deckenlampen,
               states.switch.aquarium_licht,
               states.light.rgb_light_strip_treppe,
-              states.light.bad_deckenlampen
+              states.light.bad_deckenlampen,
+              states.light.hund_lampe
             ] %}
 
             {% set switches = [
@@ -377,6 +378,12 @@ template:
               <b>Herbert reinigt</b>
             {% elif is_state(entity_id, 'returning') %}
               <b>Herbert ist fertig</b>
+            {% endif %}
+          waste: >
+            {% set days = states('sensor.mullabfuhrtage') %}
+            {% set waste = states('sensor.mullabfuhr') %}
+            {% if days | int(default=0) <= 1 %}
+              {{ '\U0001F5D1' }} {{ waste }}
             {% endif %}
           weather: >
             {% set temperature = states('sensor.weatherlink_temp') %}

@@ -20,13 +20,14 @@ input_number:
 #    initial: 12
 #    min: 1
 #    max: 12
-#    unit_of_measurement: h
-
-
+#    unit_of_measurement:
 input_text:
   ignore_motion:
     name: Deaktivierte Bewegungsautomationen
     initial: "placeholder"
+    max: 255
+  kueche_putz_shortcut_helper:
+    name: Kueche Putz Shortcut Helper
     max: 255
 
 

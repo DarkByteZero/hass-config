@@ -13,6 +13,8 @@ homeassistant:
 
 default_config:
 
+automation: !include automations.yaml
+
 lovelace:
   mode: yaml
   resources:
@@ -97,6 +99,11 @@ influxdb:
   password: 83z4f8034zr893z48z74
   max_retries: 3
   default_measurement: state
+
+
+pyscript:
+  allow_all_imports: true
+  hass_is_global: true
 
 waste_collection_schedule:
   sources:

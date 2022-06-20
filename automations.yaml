@@ -1,0 +1,107 @@
+- id: '1652813331766'
+  alias: Küche Putz Shortcut
+  description: ''
+  use_blueprint:
+    path: EPMatt/ikea_e1812.yaml
+    input:
+      integration: Zigbee2MQTT
+      controller_entity: sensor.kuche_shortcut_rechts_action
+      helper_last_controller_event: input_text.kueche_putz_shortcut_helper
+      action_button_short:
+      - service: vacuum.set_fan_speed
+        data:
+          fan_speed: Turbo
+        target:
+          entity_id: vacuum.herbert
+      - service: xiaomi_miio.vacuum_clean_zone
+        data:
+          zone:
+          - - 22850
+            - 31477
+            - 24114
+            - 35332
+          - - 20284
+            - 33986
+            - 22861
+            - 34895
+          - - 20283
+            - 31479
+            - 21343
+            - 34020
+        target:
+          entity_id: vacuum.herbert
+      action_button_long:
+      - service: vacuum.set_fan_speed
+        data:
+          fan_speed: Turbo
+        target:
+          entity_id: vacuum.herbert
+      - service: xiaomi_miio.vacuum_clean_segment
+        data:
+          segments:
+          - 16
+        target:
+          entity_id: vacuum.herbert
+      action_button_double:
+      - service: vacuum.set_fan_speed
+        data:
+          fan_speed: Auto
+        target:
+          entity_id: vacuum.herbert
+      - service: xiaomi_miio.vacuum_clean_segment
+        data:
+          segments:
+          - 16
+        target:
+          entity_id: vacuum.herbert
+      button_double_press: true
+      controller_device: 34a08159f4db797386e10050ba4046b9
+- id: '1655202617008'
+  alias: Mailbox Count
+  mode: restart
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.briefkasten_contact
+    from: 'off'
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.aussentur_strasse_contact
+    not_from:
+    - unknown
+    - unavailable
+  condition: '{{ as_timestamp(now()) - as_timestamp(state_attr(this.entity_id, ''last_triggered''))
+    > 7 or trigger.entity_id == ''binary_sensor.aussentur_strasse_contact'' }}
+
+    '
+  action:
+  - choose:
+    - conditions: '{{ trigger.entity_id == ''binary_sensor.aussentur_strasse_contact''
+        }}
+
+        '
+      sequence:
+      - service: mqtt.publish
+        data:
+          topic: homeassistant/persistence/mailbox
+          payload: 0
+          retain: true
+    default:
+    - service: mqtt.publish
+      data:
+        topic: homeassistant/persistence/mailbox
+        payload_template: '{{ states(''sensor.mailbox'') | int + 1 }}
+
+          '
+        retain: true
+- id: '1620151859232'
+  alias: Mama Fernbedienung
+  description: ''
+  use_blueprint:
+    path: homeassistant/tradfri_remote.yaml
+    input:
+      remote_entity: sensor.mama_fernbedienung_action
+      light_entity:
+        device_id:
+        - 61662a2076199ff8d480d29aa91a669d
+        - f504ac04672ed029ab111f74af413a52
+        - 7eff6f4b402607c18fc1f21307c9ae66
