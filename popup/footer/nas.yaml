@@ -1,7 +1,7 @@
 action: fire-dom-event
 browser_mod:
   command: popup
-  title: Information
+  title: NAS
   style:
     .: |
       :host {
@@ -87,7 +87,7 @@ browser_mod:
           - entity: sensor.databas
             icon: mdi:database
 
-          - entity: sensor.home_assistant_log
+          - entity: sensor.home_assistant_log_size
             name: Loggfil
             icon: mdi:file-document
 
@@ -177,7 +177,7 @@ browser_mod:
             entity_row: true
             entities:
 
-              - entity: sensor.docker_cpu
+              - entity: sensor.docker_1cpu
                 name: Processor
 
               - entity: sensor.docker_memory_percent

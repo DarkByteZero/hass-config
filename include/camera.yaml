@@ -28,19 +28,7 @@ camera:
       color_zones_outline: [0,0,0,0]
       color_zones: [0,0,0,0]
     draw:
-      - charger
-      - cleaned_area
-      - goto_path
-      - no_go_zones
-      - no_mopping_zones
-      - obstacles_with_photo
-      - obstacles
-      - path
-      - predicted_path
-      - room_names
-      - vacuum_position
-      - virtual_walls
-      - zones
+      - all
     map_transformation:
       scale: 2
       trim:
