@@ -73,9 +73,9 @@ homeassistant:
 #      icon: custom:pedestal-fan
 #
     # template.yaml
-#    select.herbert_speed:
-#      friendly_name: Reinigungsmodus
-#      icon: mdi:format-list-bulleted
+    select.herbert_speed:
+      friendly_name: Reinigungsmodus
+      icon: mdi:format-list-bulleted
 #    select.hdmi_bravia:
 #      friendly_name: Källa
 #      icon: custom:hdmi-source
@@ -91,9 +91,9 @@ homeassistant:
 #      friendly_name: Tänd ljusslinga med rörelsedetektor
 #
     #sidebar_vacuum.yaml
-#    sensor.herbert_last_clean_end:
-#      friendly_name: Zuletzt gereinigt
-#      icon: mdi:calendar-clock
+    sensor.herbert_last_clean_end:
+      friendly_name: Zuletzt gereinigt
+      icon: mdi:calendar-clock
 #
 #    #sidebar_information.yaml
 #    switch.galaxy_tab_a_screensaver:
