@@ -5,7 +5,7 @@
 #################################################
 
 occupancy:
-  double_tap_action:
+  hold_action:
     action: call-service
     service: input_text.set_value
     service_data:

@@ -37,7 +37,7 @@ circle:
             *                                 *
             * * * * * * * * * * * * * * * * * */
 
-            let circle = (state, input, unit) => {
+            let circle = (state, input, unit, fillColor = state ? 'var(--c-fill-color-on)' : 'var(--c-fill-color-off)') => {
                 return `
                   <svg viewBox="0 0 50 50">
                     <style>
@@ -48,7 +48,7 @@ circle:
                         stroke-dashoffset: ${typeof input === 'number' && c - input / 100 * c};
                         stroke-width: var(--c-stroke-width);
                         stroke: ${state ? 'var(--c-stroke-color-on)' : 'var(--c-stroke-color-off)'};
-                        fill: ${state ? 'var(--c-fill-color-on)' : 'var(--c-fill-color-off)'};
+                        fill: ${fillColor};
                       }
                       text {
                         font-size: var(--c-font-size);
@@ -184,6 +184,24 @@ circle:
 
             else if (domain === 'climate') {
                 return circle(state, input, unit);
+            }
+      
+           /* * * * * * * * * * * * * * * * * *
+            *                                 *
+            *             Plant               *
+            *                                 *
+            * * * * * * * * * * * * * * * * * */
+
+            else if (domain === 'plant') {
+                if (entity.state === 'problem') {
+                    return circle(state, input, unit, "rgba(255,0,0,0.04)");
+                } else if (entity.attributes.temperature > 10 && entity.attributes.temperature < 15) {
+                      return circle(state, input, unit, "rgba(255,128,0,0.04)");
+                } else if (entity.attributes.moisture > 30 && entity.attributes.moisture < 40) {
+                      return circle(state, input, unit, "rgba(255,128,0,0.04)");
+                } else {
+                      return circle(state, input, unit);
+                }
             }
 
            /* * * * * * * * * * * * * * * * * *

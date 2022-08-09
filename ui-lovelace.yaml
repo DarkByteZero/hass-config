@@ -360,12 +360,12 @@ views:
 
       #################################################
       #                                               #
-      #                     MEDIA                     #
+      #                     Garten                    #
       #                                               #
       #################################################
 
       - type: grid
-        title: Media
+        title: Garten
         view_layout:
           grid-area: media
         columns: 1
@@ -377,108 +377,167 @@ views:
               spaceBetween: 40
               threshold: 5
             cards:
-
-              - type: horizontal-stack
+              - type: grid
+                columns: 2
                 cards:
+                  - type: custom:button-card
+                    entity: plant.aurora_1
+                    name: Aurora 1
+                    template:
+                      - base
+                      - icon_plant
+                      - circle
+                    variables:
+                      circle_input: >
+                        [[[
+                          if (entity) {
+                            if (entity.state === 'problem' && entity.attributes.problem.includes('brightness')) {
+                                return Math.round(entity.attributes.brightness).toString()
+                            } else if (entity.state === 'problem' && entity.attributes.problem.includes('temperature')) {
+                                return Math.round(entity.attributes.temperature).toString()
+                            } else {
+                                return Math.round(entity.attributes.moisture).toString()
+                            }
+                          }
+                        ]]]
+                      circle_input_unit: >
+                        [[[
+                          if (entity) {
+                            if (entity.state === 'problem' && entity.attributes.problem.includes('brightness')) {
+                                return "lux"
+                            } else if (entity.state === 'problem' && entity.attributes.problem.includes('temperature')) {
+                                return "°C"
+                            } else {
+                                return "%"
+                            }
+                          }
+                        ]]]
 
-                  - type: conditional
-                    conditions:
-                      - entity: select.conditional_media
-                        state_not: Vardagsrum
+                  - type: custom:button-card
+                    entity: plant.aurora_2
+                    name: Aurora 2
+                    template:
+                      - base
+                      - icon_plant
+                      - circle
+                    variables:
+                      circle_input: >
+                        [[[
+                          if (entity) {
+                            if (entity.state === 'problem' && entity.attributes.problem.includes('brightness')) {
+                                return Math.round(entity.attributes.brightness).toString()
+                            } else if (entity.state === 'problem' && entity.attributes.problem.includes('temperature')) {
+                                return Math.round(entity.attributes.temperature).toString()
+                            } else {
+                                return Math.round(entity.attributes.moisture).toString()
+                            }
+                          }
+                        ]]]
+                      circle_input_unit: >
+                        [[[
+                          if (entity) {
+                            if (entity.state === 'problem' && entity.attributes.problem.includes('brightness')) {
+                                return "lux"
+                            } else if (entity.state === 'problem' && entity.attributes.problem.includes('temperature')) {
+                                return "°C"
+                            } else {
+                                return "%"
+                            }
+                          }
+                        ]]]
 
-                      - entity: select.conditional_media
-                        state_not: Sovrum
+                  - type: custom:button-card
+                    entity: light.wohnzimmer_deckenlampen
+                    name: Decke
+                    template:
+                      - light
+                      - icon_spot
 
-                      - entity: select.conditional_media
-                        state_not: Spotify
-
-                      - entity: select.conditional_media
-                        state_not: Kök
-                    card:
-                      type: custom:button-card
-                      entity: sensor.plex_recently_added
-                      name: Senast tillagt
-                      tap_action:
-                        action: none
-                      template:
-                        - conditional_media
-                        - icon_plex
-
-                  - type: conditional
-                    conditions:
-                      - entity: select.conditional_media
-                        state: Vardagsrum
-                    card:
-                      type: custom:button-card
-                      entity: media_player.vardagsrum
-                      template:
-                        - conditional_media
-                        - icon_apple_tv
-
-                  - type: conditional
-                    conditions:
-                      - entity: select.conditional_media
-                        state: Sovrum
-                    card:
-                      type: custom:button-card
-                      entity: media_player.sovrum
-                      template:
-                        - conditional_media
-                        - icon_apple_tv
-
-                  - type: conditional
-                    conditions:
-                      - entity: select.conditional_media
-                        state: Spotify
-                    card:
-                      type: custom:button-card
-                      entity: media_player.spotify
-                      template:
-                        - conditional_media
-                        - icon_spotify
-
-                  - type: conditional
-                    conditions:
-                      - entity: select.conditional_media
-                        state: Kök
-                    card:
-                      type: custom:button-card
-                      entity: media_player.kok
-                      template:
-                        - conditional_media
-                        - icon_nest_mini
+                  - type: custom:button-card
+                    entity: media_player.living_room_tv
+                    name: TV
+                    #state_display: >
+                    #  [[[
+                    #    if (variables.state == 'playing') {
+                    #      return 'På';
+                    #    }
+                    #  ]]]
+                    hold_action: !include popup/living_room_tv.yaml
+                    template:
+                      - base
+                      - icon_tv
+                      - loader
 
               - type: grid
                 columns: 2
                 cards:
+                  #                  - type: custom:mini-graph-card
+                  #                    entities:
+                  #                      - entity: sensor.wohnzimmer_klima_temperature
+                  #                        name: Temperatur (24h)
+                  #                        show_fill: true
+                  #                    hours_to_show: 24
+                  #                    line_width: 3
+                  #                    hour24: true
+                  #                    points_per_hour: 2
+                  #                    decimals: 1
+                  #                    height: 250
+                  #                    show:
+                  #                      animate: true
+                  #                      icon: false
+                  #                      labels: false
+                  #                      legend: false
+                  #                      name: false
+                  #                      graph: line
+                  #                      extrema: false
+                  #                      average: false
+                  #                    card_mod:
+                  #                      style: |
+                  #                        ha-card {
+                  #                          background: rgba(190,190,190,0.1);
+                  #                          border-radius: 20px;
+                  #                        }
+                  #
+                  #                  - type: custom:mini-graph-card
+                  #                    entities:
+                  #                      - entity: sensor.wohnzimmer_klima_humidity
+                  #                        name: Luftfeuchtigkeit (24h)
+                  #                        show_fill: true
+                  #                    hours_to_show: 24
+                  #                    align_icon: right
+                  #                    align_state: left
+                  #                    line_width: 3
+                  #                    hour24: true
+                  #                    points_per_hour: 2
+                  #                    decimals: 1
+                  #                    height: 250
+                  #                    show:
+                  #                      animate: true
+                  #                      icon: false
+                  #                      labels: false
+                  #                      legend: false
+                  #                      name: false
+                  #                      graph: line
+                  #                    card_mod:
+                  #                      style: |
+                  #                        ha-card {
+                  #                          background: rgba(190,190,190,0.1);
+                  #                          border-radius: 20px;
+                  #                        }
 
                   - type: custom:button-card
-                    entity: media_player.vardagsrum
-                    name: Vardagsrum
+                    entity: switch.aquarium_licht
+                    name: Aquarium
                     template:
-                      - media
-                      - icon_apple_tv
-
+                      - base
+                      - icon_aquarium
                   - type: custom:button-card
-                    entity: media_player.sovrum
-                    name: Sovrum
+                    entity: switch.rolladen_wohnzimmer
+                    name: Rolladen
                     template:
-                      - media
-                      - icon_apple_tv
+                      - base
+                      - icon_shutter
 
-                  - type: custom:button-card
-                    entity: media_player.spotify
-                    name: Spotify
-                    template:
-                      - media
-                      - icon_spotify
-
-                  - type: custom:button-card
-                    entity: media_player.kok
-                    name: Nest Mini
-                    template:
-                      - media
-                      - icon_nest_mini
 
       #################################################
       #                                               #
@@ -487,7 +546,7 @@ views:
       #################################################
 
       - type: grid
-        title: Zimmer Lennart
+        title: Lennart
         view_layout:
           grid-area: övrigt
         columns: 1

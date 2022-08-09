@@ -5,7 +5,7 @@ base:
     - extra_styles
   variables:
     state_on: >
-      [[[ return ['on', 'home', 'cool', 'fan_only', 'playing', 'unlocked'].indexOf(!entity || entity.state) !== -1; ]]]
+      [[[ return ['on', 'home', 'cool', 'fan_only', 'playing', 'unlocked', 'problem'].indexOf(!entity || entity.state) !== -1; ]]]
     state: >
       [[[ return !entity || entity.state; ]]]
     entity_id: >
@@ -44,14 +44,6 @@ base:
     haptic: medium
   double_tap_action:
     haptic: success
-  hold_action:
-    action: call-service
-    service: browser_mod.toast
-    service_data:
-      duration: 3000
-      message: >
-        Tips! Dubbelklicka för att öppna popup-meny
-    haptic: failure
   styles:
     grid:
       - grid-template-areas: |
