@@ -1,7 +1,7 @@
 action: fire-dom-event
 browser_mod:
   command: popup
-  title: Uppdateringar
+  title: Aktualisierungen
   style:
     .: |
       :host .content {
@@ -19,7 +19,7 @@ browser_mod:
         #root {
           grid-gap: 0 !important;
           padding: var(--card-content-padding);
-          width: 95%;
+          width: max-content;
         }
   card:
     type: grid
@@ -27,20 +27,38 @@ browser_mod:
     square: false
     cards:
       - type: custom:button-card
-        entity: sensor.current_version
-        template: updates_hass
-        variables:
-          latest: sensor.docker_hub
-          latest_beta: sensor.docker_hub_beta
-          release_notes: sensor.hass_release_notes
-          release_notes_beta: sensor.hass_release_notes_beta
+        entity: sensor.hass_version_installed
+        template: updater_hass
 
       - type: custom:button-card
-        entity: sensor.current_version
+        entity: sensor.hass_version_installed
+        triggers_update:
+          - sensor.hass_version_latest
+          - sensor.hass_version_latest_beta
         name: Uppdatera HASS
-        variables:
-          latest: sensor.docker_hub
-          latest_beta: sensor.docker_hub_beta
+        icon: mdi:update
+        styles:
+          card:
+            - width: max-content
+            - filter: >
+                [[[
+                  return `[[[
+                    if (entity) {
+                      return entity.state === states['sensor.hass_version_latest'].state ||
+                        entity.state === states['sensor.hass_version_latest_beta'].state
+                          ? 'opacity(30%)'
+                          : 'drop-shadow(3px 3px 5px #00000050)';
+                    }
+                  ]]]`
+                ]]]
+            - display: >
+                [[[
+                  return `[[[
+                    return entity
+                      ? 'flex'
+                      : 'none';
+                  ]]]`
+                ]]]
         tap_action:
           services: |
             [[[
@@ -53,35 +71,66 @@ browser_mod:
                 });
               ]]]`
             ]]]
-        template: updates_hass_icon_name
+        template: icon_name
 
       - type: custom:button-card
         entity: sensor.hacs
-        variables:
-          installed: sensor.hacs_installed
-        template: updates_hacs
+        template: updater_hacs
 
       - type: custom:button-card
         entity: sensor.hacs
-        name: Öppna HACS
-        template:
-          - updates_hacs_icon_name
-          - >
-            [[[
-              return window.navigator.userAgent.match(/iPhone/i)
-                ? 'hacs_navigate_ios'
-                : 'hacs_iframe';
-            ]]]
+        name: Öffne HACS
+        icon: mdi:open-in-new
+        styles:
+          card:
+            - width: max-content
+            - filter: >
+                [[[
+                  return `[[[
+                    if (entity) {
+                      return entity.state === '0'
+                        ? 'opacity(30%)'
+                        : 'drop-shadow(3px 3px 5px #00000050)';
+                    }
+                  ]]]`
+                ]]]
+            - display: >
+                [[[
+                  return `[[[
+                    return entity && entity.state !== 'unknown'
+                      ? 'flex'
+                      : 'none';
+                  ]]]`
+                ]]]
+        template: >
+          [[[
+            return window.navigator.userAgent.match(/iPhone/i)
+              ? 'hacs_navigate_ios'
+              : 'hacs_iframe';
+          ]]]
 
       - type: custom:button-card
         entity: sensor.template_updates
-        template: updates_other
+        template: updater_other
 
       - type: custom:button-card
         entity: sensor.template_updates
         name: Kontrollera
+        icon: mdi:reload
+        styles:
+          card:
+            - width: max-content
+            - filter: 'opacity(30%)'
+            - display: >
+                [[[
+                  return `[[[
+                    return entity
+                      ? 'flex'
+                      : 'none';
+                  ]]]`
+                ]]]
         tap_action:
-          toast: >
+          toast: |
             [[[
               return `[[[
                 hass.callService('browser_mod', 'toast', {
@@ -97,8 +146,10 @@ browser_mod:
               - sensor.gosund_monitors_esphome_version
               - sensor.gosund_ac_esphome_version
               - sensor.gosund_fan_esphome_version
-              - sensor.updates_esphome_latest
-              - sensor.updates_kemper
+              - sensor.esphome_version_latest
+              - sensor.playactor_version_installed
+              - sensor.playactor_version_latest
+              - sensor.kemper_version
               - sensor.udm_unifios
               - update.nas_dsm_update
-        template: updates_other_icon_name
+        template: icon_name

@@ -14,6 +14,8 @@ homeassistant:
 default_config:
 
 automation: !include automations.yaml
+frontend: !include themes.yaml
+template: !include sidebar.yaml
 
 lovelace:
   mode: yaml
