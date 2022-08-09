@@ -381,21 +381,70 @@ views:
                 columns: 2
                 cards:
                   - type: custom:button-card
-                    entity: light.couchlampe
-                    name: Couch
+                    entity: plant.aurora_1
+                    name: Aurora 1
                     template:
-                      - light
-                      - icon_shade
+                      - base
+                      - icon_plant
+                      - circle
+                    variables:
+                      circle_input: >
+                        [[[
+                          if (entity) {
+                            if (entity.state === 'problem' && entity.attributes.problem === 'brightness') {
+                                return Math.round(entity.attributes.brightness).toString()
+                            } else if (entity.state === 'problem' && entity.attributes.problem === 'temperature') {
+                                return Math.round(entity.attributes.temperature).toString()
+                            } else {
+                                return Math.round(entity.attributes.moisture).toString()
+                            }
+                          }
+                        ]]]
+                      circle_input_unit: >
+                        [[[
+                          if (entity) {
+                            if (entity.state === 'problem' && entity.attributes.problem === 'brightness') {
+                                return "lux"
+                            } else if (entity.state === 'problem' && entity.attributes.problem === 'temperature') {
+                                return "°C"
+                            } else {
+                                return "%"
+                            }
+                          }
+                        ]]]     
 
                   - type: custom:button-card
-                    entity: light.rgb_light_strip_treppe
-                    name: Treppe
+                    entity: plant.aurora_2
+                    name: Aurora 2
                     template:
-                      - light
-                      - icon_led
-                      - occupancy
+                      - base
+                      - icon_plant
+                      - circle
                     variables:
-                      sensor: binary_sensor.dachboden_treppe_bewegungsmelder_occupancy
+                      circle_input: >
+                        [[[
+                          if (entity) {
+                            if (entity.state === 'problem' && entity.attributes.problem === 'brightness') {
+                                return Math.round(entity.attributes.brightness).toString()
+                            } else if (entity.state === 'problem' && entity.attributes.problem === 'temperature') {
+                                return Math.round(entity.attributes.temperature).toString()
+                            } else {
+                                return Math.round(entity.attributes.moisture).toString()
+                            }
+                          }
+                        ]]]
+                      circle_input_unit: >
+                        [[[
+                          if (entity) {
+                            if (entity.state === 'problem' && entity.attributes.problem === 'brightness') {
+                                return "lux"
+                            } else if (entity.state === 'problem' && entity.attributes.problem === 'temperature') {
+                                return "°C"
+                            } else {
+                                return "%"
+                            }
+                          }
+                        ]]]
 
                   - type: custom:button-card
                     entity: light.wohnzimmer_deckenlampen
