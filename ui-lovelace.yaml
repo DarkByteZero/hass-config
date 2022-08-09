@@ -428,7 +428,7 @@ views:
                           if (entity) {
                             if (entity.state === 'problem' && entity.attributes.problem.includes('brightness')) {
                                 return Math.round(entity.attributes.brightness).toString()
-                            } else if (entity.state === 'problem' && entity.attributes.problem.includes(temperature')) {
+                            } else if (entity.state === 'problem' && entity.attributes.problem.includes('temperature')) {
                                 return Math.round(entity.attributes.temperature).toString()
                             } else {
                                 return Math.round(entity.attributes.moisture).toString()
@@ -440,7 +440,7 @@ views:
                           if (entity) {
                             if (entity.state === 'problem' && entity.attributes.problem.includes('brightness')) {
                                 return "lux"
-                            } else if (entity.state === 'problem' && entity.attributes.problem.includes(temperature')) {
+                            } else if (entity.state === 'problem' && entity.attributes.problem.includes('temperature')) {
                                 return "°C"
                             } else {
                                 return "%"
