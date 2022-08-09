@@ -1,12 +1,12 @@
-settings:
-  variables:
-    entity_tablet: switch.galaxy_tab_a_screensaver
-    entity_browser_mod: media_player.browser_dd239c79_406b9d77
-    translate_unknown: Okänt
-    translate_idle: Inaktiv
-    translate_home: Ja
-    translate_not_home: Nej
-    translate_available: tillgänglig
-    translate_no_updates: Inga uppdateringar
-    translate_update_available: uppdatering tillgänglig
-    translate_updates_available: uppdateringar tillgängliga
+  settings:
+    variables:
+      entity_tablet: switch.galaxy_tab_a_screensaver # TODO: Change to your entity
+      entity_browser_mod: media_player.browser_tablet
+      translate_unknown: Unbekannt
+      translate_idle: Inaktiv
+      translate_home: Zuhause
+      translate_not_home: Abwesend
+      translate_available: Verfügbar
+      translate_no_updates: Keine Updates
+      translate_update_available: Update verfügbar
+      translate_updates_available: Updates verfügbar

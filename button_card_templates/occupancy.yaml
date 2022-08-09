@@ -1,0 +1,57 @@
+#################################################
+#                                               #
+#                  Occupancy                    #
+#                                               #
+#################################################
+
+occupancy:
+  double_tap_action:
+    action: call-service
+    service: input_text.set_value
+    service_data:
+      entity_id: input_text.ignore_motion
+      value: >
+        [[[
+          let ignored = states["input_text.ignore_motion"].state.split(',');
+          if (ignored.includes(variables.sensor)) {
+            for( var i = 0; i < ignored.length; i++) { 
+                    if ( ignored[i] === variables.sensor) { 
+                        ignored.splice(i, 1); 
+                    }
+                }
+            return ignored.join(',');
+          } else {
+            ignored.push(variables.sensor);
+            console.log(ignored.join(','))
+            return ignored.join(',');
+          }
+        ]]]
+  custom_fields:
+    secondary_info: >
+      [[[
+        let motion = states[variables.sensor].state;
+        if (motion === "on" && !states["input_text.ignore_motion"].state.split(',').includes(variables.sensor)) {
+          return `
+            <ha-icon
+            icon="mdi:motion-sensor"
+            style="color: green;">
+            </ha-icon>
+          `;
+      
+        } else if (states["input_text.ignore_motion"].state.split(',').includes(variables.sensor)) {
+          return `
+            <ha-icon
+            icon="mdi:motion-sensor-off"
+            style="color: red;">
+            </ha-icon>
+          `;
+        }
+      ]]]
+  styles:
+    custom_fields:
+      secondary_info:
+        - top: 70%
+        - right: 3%
+        - width: 30%
+        - position: absolute
+        - opacity: 1
