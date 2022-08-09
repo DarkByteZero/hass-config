@@ -171,7 +171,7 @@ plant:
     max_moisture: 70
     min_conductivity: 0
     min_temperature: 10
-    max_temperatur: 30
+    max_temperature: 30
   aurora_2:
     sensors:
       moisture: sensor.flora_2_moisture
@@ -183,7 +183,7 @@ plant:
     max_moisture: 70
     min_conductivity: 0
     min_temperature: 10
-    max_temperatur: 30
+    max_temperature: 30
 
 #timer:
 #  laundry:
