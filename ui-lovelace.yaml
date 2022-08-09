@@ -391,9 +391,9 @@ views:
                       circle_input: >
                         [[[
                           if (entity) {
-                            if (entity.state === 'problem' && entity.attributes.problem === 'brightness') {
+                            if (entity.state === 'problem' && entity.attributes.problem.includes('brightness')) {
                                 return Math.round(entity.attributes.brightness).toString()
-                            } else if (entity.state === 'problem' && entity.attributes.problem === 'temperature') {
+                            } else if (entity.state === 'problem' && entity.attributes.problem.includes(temperature')) {
                                 return Math.round(entity.attributes.temperature).toString()
                             } else {
                                 return Math.round(entity.attributes.moisture).toString()
@@ -403,16 +403,17 @@ views:
                       circle_input_unit: >
                         [[[
                           if (entity) {
-                            if (entity.state === 'problem' && entity.attributes.problem === 'brightness') {
+                            if (entity.state === 'problem' && entity.attributes.problem.includes('brightness')) {
                                 return "lux"
-                            } else if (entity.state === 'problem' && entity.attributes.problem === 'temperature') {
+                            } else if (entity.state === 'problem' && entity.attributes.problem.includes(temperature')) {
                                 return "°C"
                             } else {
                                 return "%"
                             }
                           }
                         ]]]
-                      state_on: "ok"
+                      state_on: "problem"
+                      state_off: "ok"
 
                   - type: custom:button-card
                     entity: plant.aurora_2
@@ -425,9 +426,9 @@ views:
                       circle_input: >
                         [[[
                           if (entity) {
-                            if (entity.state === 'problem' && entity.attributes.problem === 'brightness') {
+                            if (entity.state === 'problem' && entity.attributes.problem.includes('brightness')) {
                                 return Math.round(entity.attributes.brightness).toString()
-                            } else if (entity.state === 'problem' && entity.attributes.problem === 'temperature') {
+                            } else if (entity.state === 'problem' && entity.attributes.problem.includes(temperature')) {
                                 return Math.round(entity.attributes.temperature).toString()
                             } else {
                                 return Math.round(entity.attributes.moisture).toString()
@@ -437,16 +438,17 @@ views:
                       circle_input_unit: >
                         [[[
                           if (entity) {
-                            if (entity.state === 'problem' && entity.attributes.problem === 'brightness') {
+                            if (entity.state === 'problem' && entity.attributes.problem.includes('brightness')) {
                                 return "lux"
-                            } else if (entity.state === 'problem' && entity.attributes.problem === 'temperature') {
+                            } else if (entity.state === 'problem' && entity.attributes.problem.includes(temperature')) {
                                 return "°C"
                             } else {
                                 return "%"
                             }
                           }
                         ]]]
-                      state_on: "ok"
+                      state_on: "problem"
+                      state_off: "ok"
 
                   - type: custom:button-card
                     entity: light.wohnzimmer_deckenlampen
