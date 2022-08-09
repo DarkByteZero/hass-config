@@ -411,7 +411,8 @@ views:
                                 return "%"
                             }
                           }
-                        ]]]     
+                        ]]]
+                      state_on: "ok"
 
                   - type: custom:button-card
                     entity: plant.aurora_2
@@ -445,6 +446,7 @@ views:
                             }
                           }
                         ]]]
+                      state_on: "ok"
 
                   - type: custom:button-card
                     entity: light.wohnzimmer_deckenlampen
