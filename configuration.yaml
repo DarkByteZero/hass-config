@@ -160,19 +160,19 @@ history:
 
 
 plant:
-  aurora_1:
+  aurora_2:
     sensors:
       moisture: sensor.flora_1_moisture
       battery: sensor.flora_1_battery
       temperature: sensor.flora_1_temperature
       conductivity: sensor.flora_1_conductivity
       brightness: sensor.flora_1_brightness
-    min_moisture: 60
+    min_moisture: 25
     max_moisture: 70
     min_conductivity: 0
     min_temperature: 10
     max_temperature: 30
-  aurora_2:
+  aurora_1:
     sensors:
       moisture: sensor.flora_2_moisture
       battery: sensor.flora_2_battery

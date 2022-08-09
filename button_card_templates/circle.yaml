@@ -185,6 +185,16 @@ circle:
             else if (domain === 'climate') {
                 return circle(state, input, unit);
             }
+      
+           /* * * * * * * * * * * * * * * * * *
+            *                                 *
+            *             Plant               *
+            *                                 *
+            * * * * * * * * * * * * * * * * * */
+
+            else if (domain === 'plant') {
+                return circle(state, input, unit);
+            }
 
            /* * * * * * * * * * * * * * * * * *
             *                                 *
