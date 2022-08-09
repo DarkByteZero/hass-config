@@ -1,0 +1,286 @@
+sensor:
+  - name: weatherlink
+    platform: rest
+    resource: !secret weatherlink_resource
+    scan_interval: 60
+    json_attributes:
+      - temp_c
+      - davis_current_observation
+      - relative_humidity
+    value_template: "{{ value_json.weatherlink }}"
+
+  - platform: rest
+    resource: !secret solar_inverter_resource
+    name: solar_inverter
+    scan_interval: 10
+    json_attributes:
+      - systemdata
+    value_template: "{{ value_json.solar_inverter }}"
+    state_class: "total_increasing"
+
+  #  - platform: rest
+  #    resource: !secret solar_inverter_resource
+  #    name: "Solarstrom Insgesamt"
+  #    #friendly_name: "Solarstrom Insgesamt"
+  #    unit_of_measurement: "kWh"
+  #    device_class: "energy"
+  #    scan_interval: 60
+  #    value_template: '{{ (value_json["systemdata"]["current"]["TOTAL_ENERGY"]["#text"] | float) / 1000  }}'
+  #    state_class: "total_increasing"
+
+  - platform: rest
+    name: Wohnzimmer Tablet
+    json_attributes:
+      - batteryLevel
+      - kioskMode
+      - screenBrightness
+      - motionDetectorState
+      - maintenanceMode
+      - appFreeMemory
+      - appUsedMemory
+      - totalFreeMemory
+      - totalUsedMemory
+      - hostname4
+      - ip4
+      - mac
+      - locationLatitude
+      - locationLongitude
+      - locationAltitude
+      - startUrl
+      - currentPage
+    resource: "http://192.168.168.169:2323/?cmd=deviceInfo&type=json&password=admin"
+    value_template: "{{ value_json.isScreenOn }}"
+
+  - platform: template
+    sensors:
+      solar_power:
+        friendly_name: "Solarstrom Aktuell"
+        unit_of_measurement: "W"
+        device_class: "power"
+        value_template: '{{ states.sensor.solar_inverter.attributes["systemdata"]["current"]["PAC"]["#text"] }}'
+      solar_power_day:
+        friendly_name: "Solarstrom Heute"
+        unit_of_measurement: "kWh"
+        device_class: "energy"
+        value_template: '{{ (states.sensor.solar_inverter.attributes["systemdata"]["current"]["DAY_ENERGY"]["#text"] | float) / 1000 }}'
+      solar_power_alltime:
+        friendly_name: "Solarstrom Insgesamt"
+        unit_of_measurement: "kWh"
+        device_class: "energy"
+        value_template: '{{ (states.sensor.solar_inverter.attributes["systemdata"]["current"]["TOTAL_ENERGY"]["#text"] | float) / 1000  }}'
+      solar_co2_day:
+        friendly_name: "Solar CO2 Heute"
+        unit_of_measurement: "kg"
+        device_class: "carbon_dioxide"
+        value_template: '{{ states.sensor.solar_inverter.attributes["systemdata"]["current"]["DAY_CO2"]["#text"] }}'
+      solar_co2_alltime:
+        friendly_name: "Solar CO2 Insgesamt"
+        unit_of_measurement: "kg"
+        device_class: "carbon_dioxide"
+        value_template: '{{ states.sensor.solar_inverter.attributes["systemdata"]["current"]["TOTAL_CO2"]["#text"] }}'
+      weatherlink_temp:
+        friendly_name: "Außentemperatur"
+        unit_of_measurement: "°C"
+        device_class: "temperature"
+        value_template: "{{ state_attr('sensor.weatherlink', 'temp_c') }}"
+      weatherlink_humidity:
+        friendly_name: "Außenluftfeuchtigkeit"
+        unit_of_measurement: "%"
+        device_class: "humidity"
+        value_template: "{{ state_attr('sensor.weatherlink', 'relative_humidity') }}"
+      weatherlink_uv:
+        friendly_name: "Außen-UV-Index"
+        unit_of_measurement: "UV"
+        value_template: '{{ states.sensor.weatherlink.attributes["davis_current_observation"]["uv_index"] }}'
+      weatherlink_itemp:
+        friendly_name: "Wohnzimmer Temperatur Mitte"
+        value_template: '{{ ((states.sensor.weatherlink.attributes["davis_current_observation"]["temp_in_f"] | float - 32) * (5/9)) | round(1) }}'
+        unit_of_measurement: "°C"
+        device_class: "temperature"
+      weatherlink_ihumidity:
+        friendly_name: "Wohnzimmer Luftfeuchtigkeit Mitte"
+        value_template: '{{ states.sensor.weatherlink.attributes["davis_current_observation"]["relative_humidity_in"] }}'
+        unit_of_measurement: "%"
+        device_class: "humidity"
+      20_sensor:
+        friendly_name: "20"
+        value_template: >
+          20
+
+  - platform: time_date
+    display_options:
+      - time
+      - date
+
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /
+      - type: memory_use_percent
+      - type: processor_use
+      - type: last_boot
+    scan_interval: 120
+
+  - platform: filesize
+    file_paths:
+      - /config/home-assistant.log
+
+
+#  - platform: darksky
+#    api_key: !secret darksky_api_key
+#    language: sv
+#    monitored_conditions:
+#      - temperature
+#      - apparent_temperature
+#      - precip_probability
+
+
+
+  - platform: waste_collection_schedule
+    name: MüllabfuhrTage
+    value_template: >
+      {{ value.daysTo }}
+
+  - platform: waste_collection_schedule
+    name: Müllabfuhr
+    value_template: '{{value.types|join(", ")}} {% if value.daysTo == 0 %}Heute{% elif value.daysTo == 1 %}Morgen{% else %}in {{value.daysTo}} Tagen{% endif %}'
+
+    ####################################################
+    #                                                  #
+    #                       MQTT                       #
+    #                                                  #
+    ####################################################
+
+
+  - platform: mqtt
+    name: mailbox
+    state_topic: homeassistant/persistence/mailbox
+
+
+    ####################################################
+    #                                                  #
+    #                   COMMAND LINE                   #
+    #                                                  #
+    ####################################################
+
+  - platform: command_line
+    name: hacs_installed
+    command: |-
+      python3 << EOF
+      import os, json
+      installed = {"repositories": []}
+      path = "/config/.storage/hacs/"
+      for file in os.listdir(path):
+          name, ext = os.path.splitext(file)
+          if ext == ".hacs":
+              hacs_file = path + file
+              with open(hacs_file, "r") as file:
+                  dict = json.load(file)
+                  name = dict["data"]["full_name"]
+                  installed["repositories"] += [name]
+                  file.close()
+      print(json.dumps(installed))
+      EOF
+    value_template: >
+      {{ value_json.repositories | count }}
+    json_attributes:
+      - repositories
+    scan_interval: 86400
+
+
+#  - platform: command_line
+#    name: imac_cpu
+#    command: !secret imac_cpu
+#    unit_of_measurement: '%'
+#    value_template: >
+#      {{ (100 - value[:-1] | float(default=0)) | round(1) }}
+#    scan_interval: 86400
+#
+#  - platform: command_line
+#    name: imac_mem
+#    command: !secret imac_mem
+#    unit_of_measurement: '%'
+#    scan_interval: 86400
+#
+#  - platform: command_line
+#    name: imac_uptime
+#    command: !secret imac_uptime
+#    value_template: >
+#      {% set timestamp = value[:-1] | int(default=None) %}
+#      {% set year = 86400 * 365 %}
+#      {{ timestamp | timestamp_local if (as_timestamp(now()) - timestamp) < year else None}}
+#    scan_interval: 86400
+#
+#  - platform: command_line
+#    name: imac_ip
+#    command: !secret imac_ip
+#    scan_interval: 86400
+#
+#  - platform: command_line
+#    name: monitors_volume
+#    command: !secret monitors_update_volume
+#    scan_interval: 86400
+#
+#  - platform: command_line
+#    name: rpi_cpu
+#    command: !secret rpi_cpu
+#    unit_of_measurement: '%'
+#    scan_interval: 300
+#
+#  - platform: command_line
+#    name: rpi_mem
+#    command: !secret rpi_mem
+#    unit_of_measurement: '%'
+#    value_template: >
+#      {{ value | round(1) }}
+#    scan_interval: 300
+#
+#  - platform: command_line
+#    name: rpi_sd
+#    command: !secret rpi_sd
+#    unit_of_measurement: '%'
+#    value_template: >
+#      {{ value[:-1] }}
+#    scan_interval: 300
+#
+#  - platform: command_line
+#    name: rpi_uptime
+#    command: !secret rpi_uptime
+#    value_template: >
+#      {{ value | replace(' ', 'T') }}
+#    scan_interval: 300
+#
+#  - platform: command_line
+#    name: udm_unifios
+#    command: !secret udm_unifios
+#    value_template: |-
+#      {% set json = value_json.data[0] %}
+#      {{ json["system-stats"].cpu }}|
+#      {{ json.temperatures[1].value | round(1) }}|
+#      {{ json["system-stats"].mem }}|
+#      {{ ((json.storage[1].used / json.storage[1].size) * 100) | round(1) }}|
+#      {{ json.internet }}|
+#      {{ json.startup_timestamp | timestamp_local }}|
+#      {{ json.displayable_version }}|
+#      {{ json.upgradable }}
+#    scan_interval: 120
+#
+#  - platform: command_line
+#    name: kemper_version
+#    command: !secret kemper_version
+#    value_template: >
+#      {{ value_json.profiler_installed == value_json.profiler_latest and
+#      value_json.rigmanager_latest == value_json.rigmanager_installed }}
+#    json_attributes:
+#      - profiler_latest
+#      - profiler_installed
+#      - rigmanager_latest
+#      - rigmanager_installed
+#    scan_interval: 86400
+#
+#  - platform: command_line
+#    name: playactor_version_installed
+#    command: !secret playactor_version_installed
+#    value_template: >
+#      {{ value.split(' ')[1].split('v')[1] }}
+#    scan_interval: 86400

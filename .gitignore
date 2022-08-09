@@ -1,16 +1,23 @@
-.*
-!.HA_VERSION
 backups
 blueprints
-deps
+tts
+.*
+!.HA_VERSION
 
-secrets_template.yaml
+google_calendars.yaml
+known_devices.yaml
 secrets.yaml
+webostv.conf
 
-custom_components/
-www/community/
-www/fonts/
-www/Plex_Recently_Added/
+custom_components
+image/*
+node_red
+www/community/*
+www/Plex_Recently_Added/*
+www/fonts
 
-*.code-workspace
+home-assistant.code-workspace
 home-assistant.log*
+home-assistant_v2.db*
+
+Backup_hass.zip

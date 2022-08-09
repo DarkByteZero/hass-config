@@ -1,0 +1,44 @@
+camera:
+  - platform: generic
+    name: Wohnzimmer Tablet Kamera
+    still_image_url: !secret tablet_still_image_url
+  - platform: xiaomi_cloud_map_extractor
+    host: !secret xiaomi_vacuum_host_herbert
+    token: !secret xiaomi_vacuum_token_herbert
+    username: !secret xiaomi_cloud_username_herbert
+    password: !secret xiaomi_cloud_password_herbert
+    name: "Roborock Herbert"
+    country: de
+    colors:
+      color_robo: [224,224,224]
+      color_charger: [27,117,27]
+      color_path: [30,80,113]
+      color_goto_path: [30,80,113]
+      color_map_wall_v2: [30,30,30]
+      color_obstacle: [217,69,11]
+      color_obstacle_with_photo: [217,69,11]
+      color_virtual_walls: [255,0,0,60]
+      color_no_go_zones_outline: [255,0,0,60]
+      color_no_go_zones: [255,0,0,28]
+      color_scan: [0,0,0,0]
+      color_map_inside: [0,0,0,0]
+      color_map_outside: [0,0,0,0]
+      color_grey_wall: [0,0,0,0]
+      color_map_wall: [0,0,0,0]
+      color_zones_outline: [0,0,0,0]
+      color_zones: [0,0,0,0]
+    draw:
+      - all
+    map_transformation:
+      scale: 2
+      trim:
+        top: 19
+        right: 21
+        bottom: 21
+        left: 17
+    sizes:
+      charger_radius: 10
+      vacuum_radius: 10
+    attributes:
+      - calibration_points
+      - rooms

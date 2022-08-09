@@ -1,0 +1,9 @@
+scene:
+#  - name: home_below_horizon
+#    entities:
+#      light.dator:
+#        state: 'on'
+#  - name: home_above_horizon
+#    entities:
+#      light.dator:
+#        state: 'on'

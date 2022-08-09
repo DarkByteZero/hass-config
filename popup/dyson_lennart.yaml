@@ -1,0 +1,16 @@
+action: fire-dom-event
+browser_mod:
+  command: popup
+  title: "Dyson Lennart"
+  card:
+    type: vertical-stack
+    cards:
+      - type: entities
+        state_color: true
+        card_mod:
+          class: content
+        entities:
+
+          - entity: fan.pure_humidify_cool
+            secondary_info: last-changed
+
