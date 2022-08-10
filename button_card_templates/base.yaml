@@ -44,14 +44,6 @@ base:
     haptic: medium
   double_tap_action:
     haptic: success
-  hold_action:
-    action: call-service
-    service: browser_mod.toast
-    service_data:
-      duration: 3000
-      message: >
-        Tipps! Doppelklick zum Öffnen des Pop-up-Menüs
-    haptic: failure
   styles:
     grid:
       - grid-template-areas: |
