@@ -4,26 +4,38 @@ homekit:
       include_entity_globs:
         - binary_sensor.*_occupancy
         - binary_sensor.*_contact
-        - light.couchlampe_*
-        - light.kreislampe_*
-        - light.deckenleuchte_*
-        - light.dachboden_deckenlampe_*
-        - light.wohnzimmer_deckenlampe_*
-        - light.bad_deckenlampe_*
         - camera.garten*
         - sensor.*_temperature
         - sensor.*_humidity
         - sensor.*_pressure
         - sensor.*_illuminance_lux
+        - sensor.weatherlink_*
         - sensor.dyson_*
         - fan.*
         - humidifier.*
+        - switch.rolladen_*
       include_entities:
         - camera.haustur
         - camera.wohnzimmer_tablet_kamera
         - scene.lg_fernseher_power
         - binary_sensor.flur
         - lock.flur
+    entity_config:
+      humidifier.pure_humidify_cool:
+        linked_humidity_sensor: sensor.pure_humidify_cool_humidity
+
+  - ip_address: 192.168.168.196
+    port: 51828
+    name: HASS Light Bridge
+    filter:
+      include_entity_globs:
+        - light.couchlampe_*
+        - light.kreislampe_*
+        - light.deckenleuchte_*
+        - light.dachboden_deckenlampe_*
+        - light.wohnzimmer_deckenlampe_*
+        - light.bad_deckenlampe_*
+        - light.wandstrahler_*
     entity_config:
       humidifier.pure_humidify_cool:
         linked_humidity_sensor: sensor.pure_humidify_cool_humidity
