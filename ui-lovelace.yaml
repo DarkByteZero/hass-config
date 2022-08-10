@@ -45,7 +45,7 @@ views:
     cards:
 
       - type: custom:button-card #extra_styles fix
-        styles: {card: [display: none]}
+        styles: { card: [ display: none ] }
 
       #################################################
       #                                               #
@@ -384,67 +384,15 @@ views:
                     entity: plant.aurora_1
                     name: Aurora 1
                     template:
-                      - base
+                      - plant
                       - icon_plant
-                      - circle
-                    variables:
-                      circle_input: >
-                        [[[
-                          if (entity) {
-                            if (entity.state === 'problem' && entity.attributes.problem.includes('brightness')) {
-                                return Math.round(entity.attributes.brightness).toString()
-                            } else if (entity.state === 'problem' && entity.attributes.problem.includes('temperature')) {
-                                return Math.round(entity.attributes.temperature).toString()
-                            } else {
-                                return Math.round(entity.attributes.moisture).toString()
-                            }
-                          }
-                        ]]]
-                      circle_input_unit: >
-                        [[[
-                          if (entity) {
-                            if (entity.state === 'problem' && entity.attributes.problem.includes('brightness')) {
-                                return "lux"
-                            } else if (entity.state === 'problem' && entity.attributes.problem.includes('temperature')) {
-                                return "°C"
-                            } else {
-                                return "%"
-                            }
-                          }
-                        ]]]
 
                   - type: custom:button-card
                     entity: plant.aurora_2
                     name: Aurora 2
                     template:
-                      - base
+                      - plant
                       - icon_plant
-                      - circle
-                    variables:
-                      circle_input: >
-                        [[[
-                          if (entity) {
-                            if (entity.state === 'problem' && entity.attributes.problem.includes('brightness')) {
-                                return Math.round(entity.attributes.brightness).toString()
-                            } else if (entity.state === 'problem' && entity.attributes.problem.includes('temperature')) {
-                                return Math.round(entity.attributes.temperature).toString()
-                            } else {
-                                return Math.round(entity.attributes.moisture).toString()
-                            }
-                          }
-                        ]]]
-                      circle_input_unit: >
-                        [[[
-                          if (entity) {
-                            if (entity.state === 'problem' && entity.attributes.problem.includes('brightness')) {
-                                return "lux"
-                            } else if (entity.state === 'problem' && entity.attributes.problem.includes('temperature')) {
-                                return "°C"
-                            } else {
-                                return "%"
-                            }
-                          }
-                        ]]]
 
                   - type: custom:button-card
                     entity: light.wohnzimmer_deckenlampen

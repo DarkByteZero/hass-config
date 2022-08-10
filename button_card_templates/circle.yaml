@@ -194,11 +194,11 @@ circle:
 
             else if (domain === 'plant') {
                 if (entity.state === 'problem') {
-                    return circle(state, input, unit, "rgba(255,0,0,0.3)");
+                    return circle(state, input, unit, "rgba(255,0,0,0.6)");
                 } else if (entity.attributes.temperature > 10 && entity.attributes.temperature < 15) {
-                      return circle(state, input, unit, "rgba(255,128,0,0.3)");
+                      return circle(state, input, unit, "rgba(255,128,0,0.6)");
                 } else if (entity.attributes.moisture > 30 && entity.attributes.moisture < 40) {
-                      return circle(state, input, unit, "rgba(255,128,0,0.3)");
+                      return circle(state, input, unit, "rgba(255,128,0,0.6)");
                 } else {
                       return circle(state, input, unit);
                 }
