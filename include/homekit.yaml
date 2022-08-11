@@ -5,16 +5,16 @@ homekit:
       include_entity_globs:
         - binary_sensor.*_occupancy
         - binary_sensor.*_contact
-        - camera.garten*
+        #- camera.garten*
         - fan.*
         - humidifier.*
         - cover.rolladen_*
       include_entities:
-        - camera.haustur
-        - camera.wohnzimmer_tablet_kamera
+        #- camera.haustur
+        #- camera.wohnzimmer_tablet_kamera
         - scene.lg_fernseher_power
         - binary_sensor.flur
-        - lock.flur
+        #- lock.flur
     entity_config:
       humidifier.dyson_lennart:
         linked_humidity_sensor: sensor.dyson_lennart_humidity
