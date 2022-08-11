@@ -1,0 +1,28 @@
+cover:
+  - platform: template
+    covers:
+      rolladen_lennart:
+        friendly_name: Rolladen Lennart
+        device_class: shutter
+        close_cover:
+          service: scene.turn_on
+          target:
+            entity_id: scene.lennart_rolladen_runter
+        open_cover:
+          service: scene.turn_on
+          target:
+            entity_id: scene.lennart_rolladen_hoch
+        optimistic: true
+
+      rolladen_wohnzimmer:
+        friendly_name: Rolladen Wohnzimmer
+        device_class: shutter
+        close_cover:
+          service: scene.turn_on
+          target:
+            entity_id: scene.wohnzimmer_rolladen_runter
+        open_cover:
+          service: scene.turn_on
+          target:
+            entity_id: scene.wohnzimmer_rolladen_hoch
+        optimistic: true

@@ -124,6 +124,11 @@ waste_collection_schedule:
 aarlo:
   username: !secret arlo_username
   password: !secret arlo_password
+  tfa_source: imap
+  tfa_type: email
+  tfa_host: imap.gmail.com
+  tfa_username: !secret gmail_username
+  tfa_password: !secret gmail_password
   refresh_devices_every: 2
   stream_timeout: 120
 
