@@ -1,4 +1,10 @@
 binary_sensor:
+  - platform: aarlo
+    monitored_conditions:
+      - motion
+      - sound
+      - ding
+      - connectivity
 #  - platform: command_line
 #    name: monitors_mute_state
 #    scan_interval: 86400

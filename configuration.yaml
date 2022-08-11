@@ -120,6 +120,13 @@ waste_collection_schedule:
 #  client_id: !secret google_client_id
 #  client_secret: !secret google_client_secret
 
+
+aarlo:
+  username: !secret arlo_username
+  password: !secret arlo_password
+  refresh_devices_every: 2
+  stream_timeout: 120
+
 icloud:
   - username: !secret icloud_username
     password: !secret icloud_password

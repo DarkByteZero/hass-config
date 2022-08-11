@@ -42,3 +42,5 @@ camera:
     attributes:
       - calibration_points
       - rooms
+
+  - platform: aarlo

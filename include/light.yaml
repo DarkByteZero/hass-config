@@ -11,3 +11,4 @@ light:
       - light.bad_deckenlampe_7
       - light.bad_deckenlampe_8
       - light.bad_deckenlampe_9
+  - platform: aarlo
