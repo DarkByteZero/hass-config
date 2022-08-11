@@ -8,7 +8,7 @@ homekit:
         - camera.garten*
         - fan.*
         - humidifier.*
-        - switch.rolladen_*
+        - cover.rolladen_*
       include_entities:
         - camera.haustur
         - camera.wohnzimmer_tablet_kamera
