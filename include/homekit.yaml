@@ -14,7 +14,7 @@ homekit:
         #- camera.wohnzimmer_tablet_kamera
         - scene.lg_fernseher_power
         - binary_sensor.flur
-        #- lock.flur
+        - lock.flur
     entity_config:
       humidifier.dyson_lennart:
         linked_humidity_sensor: sensor.dyson_lennart_humidity
