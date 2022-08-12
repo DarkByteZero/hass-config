@@ -37,7 +37,7 @@ homekit:
     name: HASS Sensor Bridge
     filter:
       include_entity_globs:
-        - sensor.*klima_temperature
+        - sensor.*_temperature
         - sensor.*_humidity
         - sensor.*_pressure
         - sensor.*_illuminance_lux
@@ -47,6 +47,12 @@ homekit:
         - sensor.*_pm_10
         - sensor.*_nitrogen_dioxide
         - sensor.*_volatile_organic_compounds
+      exclude_entity_globs:
+        - sensor.*_fenster_*_temperature
+        - sensor.*_fenster_temperature
+        - sensor.flora*
+      exclude_entities:
+        - sensor.pc_lennart_cpu_temperature
 
 #  - name: HASS Bridge Sony
 #    ip_address: !secret homekit_ip_address
